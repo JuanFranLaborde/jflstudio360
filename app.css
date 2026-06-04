@@ -172,6 +172,12 @@ html.js .line-mask > span{ transform:translateY(110%); }
 .feature-media.is-brand{ background:radial-gradient(circle at 50% 38%,rgba(255,85,79,.20),transparent 60%),linear-gradient(150deg,#16143a,#0b0a1c); border-color:rgba(255,244,220,.16); }
 .feature-media.is-brand img{ object-fit:contain; padding:clamp(30px,5vw,64px); filter:drop-shadow(0 24px 30px rgba(0,0,0,.45)); }
 .feature-media.is-brand .glow{ display:none; }
+/* Tema claro: panel cálido y claro (el logo se diseñó para fondo claro) */
+:root[data-theme="light"] .feature-media.is-brand{
+  background:radial-gradient(circle at 50% 38%,rgba(255,85,79,.12),transparent 60%),linear-gradient(150deg,#fffdf8,#f3ebdd);
+  border-color:var(--line);
+}
+:root[data-theme="light"] .feature-media.is-brand img{ filter:drop-shadow(0 16px 24px rgba(18,16,58,.16)); }
 .feature-media .glow{ position:absolute; inset:auto -20% -40% -20%; height:60%; background:radial-gradient(circle,rgba(255,85,79,.22),transparent 70%); pointer-events:none; }
 
 /* ------------------------------------------------------------------ */
