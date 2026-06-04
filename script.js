@@ -205,21 +205,19 @@
         { target: el, offset: ['start end', 'end start'] });
     });
 
-    // Hero cinemático: la copy se desplaza y atenúa al bajar.
-    // Solo en desktop (≥1100px): en mobile el layout se apila y el
-    // parallax vertical haría que la copy y la tarjeta se superpongan.
-    const hero = document.querySelector('.hero');
-    const heroCopy = document.querySelector('.hero-copy');
-    const heroCard = document.querySelector('.hero-brand-card');
-    if (hero && (heroCopy || heroCard)) {
+    // Hero container-scroll (estilo Aceternity): el título sube y la
+    // tarjeta-logo rota en 3D (16°→0°) y escala a medida que se baja.
+    const csSection = document.querySelector('[data-cs]');
+    const csHeader = csSection && csSection.querySelector('[data-cs-header]');
+    const csCard = csSection && csSection.querySelector('[data-cs-card]');
+    if (csSection && csCard) {
+      const mobile = () => window.innerWidth <= 768;
       M.scroll((p) => {
-        const wide = window.innerWidth >= 1100;
-        if (heroCopy) {
-          heroCopy.style.transform = wide ? `translateY(${p * 90}px)` : '';
-          heroCopy.style.opacity = wide ? String(1 - p * 0.85) : '';
-        }
-        if (heroCard) heroCard.style.transform = wide ? `translateY(${p * -50}px)` : '';
-      }, { target: hero, offset: ['start start', 'end start'] });
+        const rot = 16 * (1 - p);
+        const sc = mobile() ? (0.86 + 0.14 * p) : (1.05 - 0.05 * p);
+        csCard.style.transform = `rotateX(${rot}deg) scale(${sc})`;
+        if (csHeader) { csHeader.style.transform = `translateY(${-110 * p}px)`; csHeader.style.opacity = String(1 - p * 0.55); }
+      }, { target: csSection, offset: ['start start', 'end end'] });
     }
   }
 
