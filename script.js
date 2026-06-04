@@ -1,37 +1,62 @@
+/* =====================================================================
+   JFL Studio 360 — V7 · Motor de interacción (Motion)
+   Multi-página · reveals scrubeados · parallax · transiciones de página.
+   Si Motion o JS fallan, el contenido permanece visible (degradado seguro).
+   ===================================================================== */
 (() => {
   const root = document.documentElement;
+  const M = window.Motion || null;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer:fine)').matches;
+  const EASE = [0.22, 0.61, 0.36, 1];
+
+  // Red de seguridad: si algo falla, mostramos todo lo oculto por reveal.
+  const showAll = () => {
+    document.querySelectorAll('[data-reveal], .reveal').forEach((el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.filter = 'none';
+    });
+    document.querySelectorAll('.line-mask > span').forEach((s) => { s.style.transform = 'none'; });
+  };
+  if (!M || prefersReduced) showAll();
 
   /* ---------------------------------------------------------------- */
   /* Preloader                                                        */
   /* ---------------------------------------------------------------- */
   const preloader = document.querySelector('.preloader');
   const hidePreloader = () => preloader?.classList.add('is-hidden');
-  window.addEventListener('load', () => setTimeout(hidePreloader, 420));
-  // Safety net: never trap the user behind the loader.
-  setTimeout(hidePreloader, 4000);
+  window.addEventListener('load', () => setTimeout(hidePreloader, 360));
+  setTimeout(hidePreloader, 3800); // nunca atrapar al usuario
 
   /* ---------------------------------------------------------------- */
-  /* Cursor glow                                                      */
+  /* Cursor glow + spotlight                                          */
   /* ---------------------------------------------------------------- */
-  window.addEventListener('pointermove', (event) => {
-    root.style.setProperty('--x', `${event.clientX}px`);
-    root.style.setProperty('--y', `${event.clientY}px`);
-  }, { passive: true });
+  if (finePointer) {
+    window.addEventListener('pointermove', (e) => {
+      root.style.setProperty('--x', `${e.clientX}px`);
+      root.style.setProperty('--y', `${e.clientY}px`);
+    }, { passive: true });
+    document.querySelectorAll('.spotlight').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${((e.clientX - r.left) / r.width) * 100}%`);
+        card.style.setProperty('--my', `${((e.clientY - r.top) / r.height) * 100}%`);
+      }, { passive: true });
+    });
+  }
 
   /* ---------------------------------------------------------------- */
-  /* Theme toggle                                                     */
+  /* Tema claro / oscuro                                              */
   /* ---------------------------------------------------------------- */
-  const storedTheme = localStorage.getItem('jfl-theme');
-  if (storedTheme === 'light' || storedTheme === 'dark') root.dataset.theme = storedTheme;
   document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
     const next = root.dataset.theme === 'light' ? 'dark' : 'light';
     root.dataset.theme = next;
-    localStorage.setItem('jfl-theme', next);
+    try { localStorage.setItem('jfl-theme', next); } catch (e) {}
   });
 
   /* ---------------------------------------------------------------- */
-  /* Mobile menu                                                      */
+  /* Menú móvil                                                       */
   /* ---------------------------------------------------------------- */
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -48,7 +73,7 @@
   });
 
   /* ---------------------------------------------------------------- */
-  /* Header scroll state + scroll progress bar                        */
+  /* Header scroll + barra de progreso                                */
   /* ---------------------------------------------------------------- */
   const header = document.querySelector('.site-header');
   const progress = document.querySelector('.scroll-progress span');
@@ -64,96 +89,156 @@
   onScroll();
 
   /* ---------------------------------------------------------------- */
-  /* Reveal on scroll (with stagger inside grids)                     */
+  /* Nav activo por página (multi-página) + por sección (anclas)      */
   /* ---------------------------------------------------------------- */
-  document.querySelectorAll('[class*="-grid"] .reveal').forEach((el, i) => {
-    const within = [...el.parentElement.querySelectorAll(':scope > .reveal')].indexOf(el);
-    el.style.setProperty('--reveal-delay', `${Math.max(within, 0) * 80}ms`);
+  const here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach((a) => {
+    const href = a.getAttribute('href') || '';
+    if (href.endsWith(here) || (here === 'index.html' && (href === './' || href === 'index.html'))) {
+      a.classList.add('is-current');
+    }
   });
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
-
-  /* ---------------------------------------------------------------- */
-  /* Active nav link                                                  */
-  /* ---------------------------------------------------------------- */
-  const navItems = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-  const sections = navItems.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        navItems.forEach((item) => item.classList.toggle('is-active', item.getAttribute('href') === `#${entry.target.id}`));
-      }
-    });
-  }, { rootMargin: '-34% 0px -60% 0px' });
-  sections.forEach((section) => sectionObserver.observe(section));
-
-  /* ---------------------------------------------------------------- */
-  /* Animated counters                                                */
-  /* ---------------------------------------------------------------- */
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      counterObserver.unobserve(el);
-      const target = parseInt(el.dataset.count, 10) || 0;
-      const suffix = el.dataset.suffix || '';
-      if (prefersReduced) { el.textContent = `${target}${suffix}`; return; }
-      const duration = 1400;
-      const start = performance.now();
-      const tick = (now) => {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = `${Math.round(target * eased)}${suffix}`;
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    });
-  }, { threshold: 0.6 });
-  document.querySelectorAll('[data-count]').forEach((el) => counterObserver.observe(el));
-
-  /* ---------------------------------------------------------------- */
-  /* Hero logo card follows cursor (3D tilt)                          */
-  /* ---------------------------------------------------------------- */
-  document.querySelectorAll('[data-cursor-card]').forEach((card) => {
-    card.addEventListener('pointermove', (event) => {
-      const rect = card.getBoundingClientRect();
-      const px = (event.clientX - rect.left) / rect.width;
-      const py = (event.clientY - rect.top) / rect.height;
-      card.style.transform = `perspective(1000px) rotateX(${(0.5 - py) * 9}deg) rotateY(${(px - 0.5) * 9}deg)`;
-      card.style.setProperty('--cx', `${px * 100}%`);
-      card.style.setProperty('--cy', `${py * 100}%`);
-    }, { passive: true });
-    card.addEventListener('pointerleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-      card.style.setProperty('--cx', '50%');
-      card.style.setProperty('--cy', '50%');
-    });
-  });
-
-  /* ---------------------------------------------------------------- */
-  /* Magnetic buttons                                                 */
-  /* ---------------------------------------------------------------- */
-  if (!prefersReduced && window.matchMedia('(pointer:fine)').matches) {
-    document.querySelectorAll('[data-magnetic]').forEach((el) => {
-      el.addEventListener('pointermove', (event) => {
-        const rect = el.getBoundingClientRect();
-        const x = event.clientX - rect.left - rect.width / 2;
-        const y = event.clientY - rect.top - rect.height / 2;
-        el.style.transform = `translate(${x * 0.22}px, ${y * 0.32}px)`;
+  const anchorItems = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+  if (anchorItems.length) {
+    const secs = anchorItems.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const so = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) anchorItems.forEach((it) => it.classList.toggle('is-active', it.getAttribute('href') === `#${entry.target.id}`));
       });
-      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    }, { rootMargin: '-34% 0px -60% 0px' });
+    secs.forEach((s) => so.observe(s));
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Reveals con Motion (inView + keyframes explícitos)               */
+  /* ---------------------------------------------------------------- */
+  const revealKeyframes = (type) => {
+    switch (type) {
+      case 'fade':  return { opacity: [0, 1] };
+      case 'scale': return { opacity: [0, 1], scale: [0.94, 1] };
+      case 'left':  return { opacity: [0, 1], x: [-44, 0] };
+      case 'right': return { opacity: [0, 1], x: [44, 0] };
+      case 'blur':  return { opacity: [0, 1], y: [20, 0], filter: ['blur(14px)', 'blur(0px)'] };
+      default:      return { opacity: [0, 1], y: [38, 0] }; // up
+    }
+  };
+
+  if (M && !prefersReduced) {
+    // Stagger dentro de grids: calcula índice entre hermanos reveal.
+    const allReveals = [...document.querySelectorAll('[data-reveal], .reveal')];
+    allReveals.forEach((el) => {
+      if (el.dataset.revealBound) return;
+      el.dataset.revealBound = '1';
+      const parent = el.parentElement;
+      const siblings = parent ? [...parent.querySelectorAll(':scope > [data-reveal], :scope > .reveal')] : [el];
+      const idx = Math.max(siblings.indexOf(el), 0);
+      const baseDelay = parseFloat(el.dataset.revealDelay || '0');
+      const delay = baseDelay + idx * 0.07;
+      const type = el.dataset.reveal || 'up';
+      let done = false;
+      M.inView(el, () => {
+        if (done) return; done = true;
+        M.animate(el, revealKeyframes(type), { duration: 0.85, delay, ease: EASE });
+      }, { amount: 0.18 });
+    });
+
+    // Big-type: líneas con máscara (stagger por línea)
+    document.querySelectorAll('[data-lines]').forEach((wrap) => {
+      const spans = wrap.querySelectorAll('.line-mask > span');
+      let done = false;
+      M.inView(wrap, () => {
+        if (done) return; done = true;
+        M.animate(spans, { y: ['110%', '0%'] }, { duration: 0.9, delay: M.stagger ? M.stagger(0.08) : 0, ease: EASE });
+      }, { amount: 0.3 });
     });
   }
 
   /* ---------------------------------------------------------------- */
-  /* Featured slider                                                  */
+  /* Parallax al scroll (elementos sin transform de hover)            */
+  /* ---------------------------------------------------------------- */
+  if (M && M.scroll && !prefersReduced) {
+    document.querySelectorAll('[data-parallax]').forEach((el) => {
+      const range = parseFloat(el.dataset.parallax) || 60;
+      M.scroll((p) => { el.style.transform = `translate3d(0, ${(p - 0.5) * range}px, 0)`; },
+        { target: el, offset: ['start end', 'end start'] });
+    });
+
+    // Hero cinemático: la copy se desplaza y atenúa al bajar.
+    const hero = document.querySelector('.hero');
+    const heroCopy = document.querySelector('.hero-copy');
+    const heroCard = document.querySelector('.hero-brand-card');
+    if (hero && (heroCopy || heroCard)) {
+      M.scroll((p) => {
+        if (heroCopy) { heroCopy.style.transform = `translateY(${p * 90}px)`; heroCopy.style.opacity = String(1 - p * 0.85); }
+        if (heroCard) { heroCard.style.transform = `translateY(${p * -50}px)`; }
+      }, { target: hero, offset: ['start start', 'end start'] });
+    }
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Contadores animados                                              */
+  /* ---------------------------------------------------------------- */
+  const runCounter = (el) => {
+    const target = parseInt(el.dataset.count, 10) || 0;
+    const suffix = el.dataset.suffix || '';
+    if (prefersReduced) { el.textContent = `${target}${suffix}`; return; }
+    const duration = 1500, start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = `${Math.round(target * eased)}${suffix}`;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  document.querySelectorAll('[data-count]').forEach((el) => {
+    if (M && M.inView) {
+      let done = false;
+      M.inView(el, () => { if (done) return; done = true; runCounter(el); }, { amount: 0.6 });
+    } else {
+      const o = new IntersectionObserver((en) => en.forEach((e) => { if (e.isIntersecting) { runCounter(el); o.unobserve(el); } }), { threshold: 0.6 });
+      o.observe(el);
+    }
+  });
+
+  /* ---------------------------------------------------------------- */
+  /* Tilt 3D de tarjetas                                              */
+  /* ---------------------------------------------------------------- */
+  if (finePointer && !prefersReduced) {
+    document.querySelectorAll('[data-tilt],[data-cursor-card]').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        card.style.transform = `perspective(1000px) rotateX(${(0.5 - py) * 9}deg) rotateY(${(px - 0.5) * 9}deg)`;
+        card.style.setProperty('--cx', `${px * 100}%`);
+        card.style.setProperty('--cy', `${py * 100}%`);
+      }, { passive: true });
+      card.addEventListener('pointerleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        card.style.setProperty('--cx', '50%'); card.style.setProperty('--cy', '50%');
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Botones magnéticos                                               */
+  /* ---------------------------------------------------------------- */
+  if (finePointer && !prefersReduced) {
+    document.querySelectorAll('[data-magnetic]').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2;
+        el.style.transform = `translate(${x * 0.22}px, ${y * 0.32}px)`;
+      });
+      el.addEventListener('pointerleave', () => {
+        if (M) M.animate(el, { x: 0, y: 0 }, { type: 'spring', stiffness: 320, damping: 22 });
+        else el.style.transform = '';
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Slider de destacados                                             */
   /* ---------------------------------------------------------------- */
   document.querySelectorAll('[data-slider]').forEach((slider) => {
     const track = slider.querySelector('[data-slider-track]');
@@ -161,17 +246,12 @@
     const prevBtn = slider.querySelector('[data-slider-prev]');
     const nextBtn = slider.querySelector('[data-slider-next]');
     const dotsWrap = slider.querySelector('[data-slider-dots]');
-    if (slides.length === 0) return;
+    if (!slides.length) return;
+    let index = 0, autoplay;
 
-    let index = 0;
-    let autoplay;
-
-    // Build dots
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-label', `Ir al trabajo ${i + 1}`);
+      dot.type = 'button'; dot.setAttribute('role', 'tab'); dot.setAttribute('aria-label', `Ir al trabajo ${i + 1}`);
       dot.addEventListener('click', () => goTo(i));
       dotsWrap?.appendChild(dot);
     });
@@ -180,94 +260,143 @@
     const render = () => {
       track.style.transform = `translateX(-${index * 100}%)`;
       slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
-      dots.forEach((d, i) => {
-        d.classList.toggle('is-active', i === index);
-        d.setAttribute('aria-selected', String(i === index));
-      });
+      dots.forEach((d, i) => { d.classList.toggle('is-active', i === index); d.setAttribute('aria-selected', String(i === index)); });
     };
     const goTo = (i) => { index = (i + slides.length) % slides.length; render(); restart(); };
-    const next = () => goTo(index + 1);
-    const prev = () => goTo(index - 1);
-
+    const next = () => goTo(index + 1), prev = () => goTo(index - 1);
     nextBtn?.addEventListener('click', next);
     prevBtn?.addEventListener('click', prev);
 
-    // Keyboard
     slider.setAttribute('tabindex', '0');
     slider.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
     });
 
-    // Autoplay (pause on hover / when tab hidden / reduced motion)
-    const startAutoplay = () => {
-      if (prefersReduced) return;
-      autoplay = setInterval(next, 5500);
-    };
+    const startAutoplay = () => { if (prefersReduced) return; autoplay = setInterval(next, 5500); };
     const stopAutoplay = () => clearInterval(autoplay);
     const restart = () => { stopAutoplay(); startAutoplay(); };
     slider.addEventListener('pointerenter', stopAutoplay);
     slider.addEventListener('pointerleave', startAutoplay);
     document.addEventListener('visibilitychange', () => document.hidden ? stopAutoplay() : startAutoplay());
 
-    // Drag / swipe
     let startX = 0, dragging = false, moved = 0;
     const viewport = slider.querySelector('.slider-viewport') || track;
-    viewport.addEventListener('pointerdown', (e) => {
-      dragging = true; startX = e.clientX; moved = 0;
-      track.classList.add('no-anim'); stopAutoplay();
-    });
-    window.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      moved = e.clientX - startX;
-      track.style.transform = `translateX(calc(-${index * 100}% + ${moved}px))`;
-    });
+    viewport.addEventListener('pointerdown', (e) => { dragging = true; startX = e.clientX; moved = 0; track.classList.add('no-anim'); stopAutoplay(); });
+    window.addEventListener('pointermove', (e) => { if (!dragging) return; moved = e.clientX - startX; track.style.transform = `translateX(calc(-${index * 100}% + ${moved}px))`; });
     window.addEventListener('pointerup', () => {
-      if (!dragging) return;
-      dragging = false;
-      track.classList.remove('no-anim');
-      if (Math.abs(moved) > 60) (moved < 0 ? next() : prev());
-      else { render(); startAutoplay(); }
+      if (!dragging) return; dragging = false; track.classList.remove('no-anim');
+      if (Math.abs(moved) > 60) (moved < 0 ? next() : prev()); else { render(); startAutoplay(); }
     });
 
-    render();
-    startAutoplay();
+    render(); startAutoplay();
   });
 
   /* ---------------------------------------------------------------- */
-  /* Portfolio filters                                                */
+  /* Galería horizontal (flechas)                                     */
+  /* ---------------------------------------------------------------- */
+  document.querySelectorAll('[data-hgallery]').forEach((wrap) => {
+    const lane = wrap.querySelector('.hgallery');
+    if (!lane) return;
+    const step = () => Math.min(lane.clientWidth * 0.8, 540);
+    wrap.querySelector('[data-hnext]')?.addEventListener('click', () => lane.scrollBy({ left: step(), behavior: 'smooth' }));
+    wrap.querySelector('[data-hprev]')?.addEventListener('click', () => lane.scrollBy({ left: -step(), behavior: 'smooth' }));
+  });
+
+  /* ---------------------------------------------------------------- */
+  /* Sticky storytelling: paso activo                                 */
+  /* ---------------------------------------------------------------- */
+  const storySteps = [...document.querySelectorAll('.story-step')];
+  const storyBtns = [...document.querySelectorAll('.aside-progress button')];
+  if (storySteps.length && storyBtns.length) {
+    const so = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const i = storySteps.indexOf(entry.target);
+        storyBtns.forEach((b, bi) => b.classList.toggle('is-active', bi === i));
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    storySteps.forEach((s) => so.observe(s));
+    storyBtns.forEach((b, i) => b.addEventListener('click', () => storySteps[i]?.scrollIntoView({ behavior: 'smooth', block: 'center' })));
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Filtros de portfolio                                             */
   /* ---------------------------------------------------------------- */
   const filters = document.querySelectorAll('.filter');
   const projects = document.querySelectorAll('.project-card');
   filters.forEach((button) => {
     button.addEventListener('click', () => {
-      filters.forEach((item) => item.classList.remove('is-active'));
+      filters.forEach((it) => it.classList.remove('is-active'));
       button.classList.add('is-active');
       const filter = button.dataset.filter;
       projects.forEach((project) => {
-        const categories = project.dataset.category || '';
-        project.classList.toggle('is-hidden', filter !== 'all' && !categories.includes(filter));
+        const cats = project.dataset.category || '';
+        const hide = filter !== 'all' && !cats.includes(filter);
+        project.classList.toggle('is-hidden', hide);
+        if (!hide && M && !prefersReduced) M.animate(project, { opacity: [0.4, 1], scale: [0.97, 1] }, { duration: 0.4, ease: EASE });
       });
     });
   });
 
   /* ---------------------------------------------------------------- */
-  /* Footer year                                                      */
+  /* Transiciones de página (velo) para navegadores sin View Trans.   */
   /* ---------------------------------------------------------------- */
-  const yearEl = document.querySelector('[data-year]');
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  const supportsVT = 'startViewTransition' in document;
+  const veil = document.querySelector('.page-veil');
+  if (!supportsVT && veil && !prefersReduced) {
+    document.querySelectorAll('a[href]').forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      const internal = /\.html(\?.*)?$/.test(href) && !a.target && !href.startsWith('http');
+      if (!internal) return;
+      a.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+        e.preventDefault();
+        veil.classList.add('is-up');
+        setTimeout(() => { window.location.href = href; }, 420);
+      });
+    });
+    // Entrada: bajar el velo al cargar
+    window.addEventListener('pageshow', () => {
+      veil.classList.remove('is-up'); veil.classList.add('is-down');
+      requestAnimationFrame(() => { veil.style.transition = 'transform .5s ' + 'cubic-bezier(.22,.61,.36,1)'; });
+      setTimeout(() => { veil.classList.remove('is-down'); veil.style.transition = ''; }, 520);
+    });
+  }
 
   /* ---------------------------------------------------------------- */
-  /* Basic image protection (deters casual downloads only)            */
+  /* Formulario de contacto → compone un mailto                       */
   /* ---------------------------------------------------------------- */
-  const protectedSelectors = 'img, .media, .mosaic, .hero-brand-card, .formation-media, .project-card, .slide-media';
+  const contactForm = document.querySelector('[data-contact-form]');
+  contactForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(contactForm);
+    const name = (data.get('name') || '').toString().trim();
+    const email = (data.get('email') || '').toString().trim();
+    const type = (data.get('type') || '').toString();
+    const message = (data.get('message') || '').toString().trim();
+    const subject = `Consulta JFL Studio 360${type ? ' — ' + type : ''}`;
+    const body = `Hola JFL Studio 360,\n\n${message}\n\n—\nNombre: ${name}\nEmail: ${email}\nProyecto: ${type}`;
+    const href = `mailto:jflstudio360@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const status = contactForm.querySelector('[data-form-status]');
+    if (status) status.textContent = 'Abriendo tu cliente de correo…';
+    window.location.href = href;
+  });
+
+  /* ---------------------------------------------------------------- */
+  /* Año del footer                                                   */
+  /* ---------------------------------------------------------------- */
+  document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
+
+  /* ---------------------------------------------------------------- */
+  /* Protección básica de imágenes                                    */
+  /* ---------------------------------------------------------------- */
+  const protectedSelectors = 'img, .media, .mosaic, .hero-brand-card, .formation-media, .project-card, .slide-media, .hcard-media, .feature-media';
   document.querySelectorAll('img').forEach((img) => {
     img.setAttribute('draggable', 'false');
     if (!img.getAttribute('loading')) img.setAttribute('loading', 'lazy');
   });
   ['contextmenu', 'dragstart'].forEach((evt) => {
-    document.addEventListener(evt, (event) => {
-      if (event.target.closest(protectedSelectors)) event.preventDefault();
-    });
+    document.addEventListener(evt, (event) => { if (event.target.closest(protectedSelectors)) event.preventDefault(); });
   });
 })();
