@@ -206,13 +206,19 @@
     });
 
     // Hero cinemático: la copy se desplaza y atenúa al bajar.
+    // Solo en desktop (≥1100px): en mobile el layout se apila y el
+    // parallax vertical haría que la copy y la tarjeta se superpongan.
     const hero = document.querySelector('.hero');
     const heroCopy = document.querySelector('.hero-copy');
     const heroCard = document.querySelector('.hero-brand-card');
     if (hero && (heroCopy || heroCard)) {
       M.scroll((p) => {
-        if (heroCopy) { heroCopy.style.transform = `translateY(${p * 90}px)`; heroCopy.style.opacity = String(1 - p * 0.85); }
-        if (heroCard) { heroCard.style.transform = `translateY(${p * -50}px)`; }
+        const wide = window.innerWidth >= 1100;
+        if (heroCopy) {
+          heroCopy.style.transform = wide ? `translateY(${p * 90}px)` : '';
+          heroCopy.style.opacity = wide ? String(1 - p * 0.85) : '';
+        }
+        if (heroCard) heroCard.style.transform = wide ? `translateY(${p * -50}px)` : '';
       }, { target: hero, offset: ['start start', 'end start'] });
     }
   }
