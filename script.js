@@ -24,10 +24,52 @@
   /* ---------------------------------------------------------------- */
   /* Preloader                                                        */
   /* ---------------------------------------------------------------- */
-  const preloader = document.querySelector('.preloader');
-  const hidePreloader = () => preloader?.classList.add('is-hidden');
-  window.addEventListener('load', () => setTimeout(hidePreloader, 360));
-  setTimeout(hidePreloader, 3800); // nunca atrapar al usuario
+  const pre = document.querySelector('[data-preloader]');
+  if (pre) {
+    let exited = false;
+    const finish = () => { pre.classList.add('is-hidden'); root.classList.remove('pl-active'); };
+    const exitLoader = () => {
+      if (exited) return; exited = true;
+      try { sessionStorage.setItem('jfl-loaded', '1'); } catch (e) {}
+      const stage = pre.querySelector('.pl-stage');
+      const top = pre.querySelector('.pl-panel--top');
+      const bot = pre.querySelector('.pl-panel--bottom');
+      if (M && !prefersReduced) {
+        if (stage) M.animate(stage, { opacity: [1, 0], scale: [1, 1.06] }, { duration: 0.4, ease: EASE });
+        if (top) M.animate(top, { y: ['0%', '-101%'] }, { duration: 0.72, delay: 0.16, ease: [0.76, 0, 0.24, 1] });
+        let ctrl;
+        if (bot) ctrl = M.animate(bot, { y: ['0%', '101%'] }, { duration: 0.72, delay: 0.16, ease: [0.76, 0, 0.24, 1] });
+        const p = ctrl && ctrl.finished;
+        if (p && p.then) p.then(finish).catch(finish);
+        setTimeout(finish, 1150); // red de seguridad
+      } else { finish(); }
+    };
+
+    if (root.classList.contains('pl-active')) {
+      const countEl = pre.querySelector('[data-pl-count]');
+      const arc = pre.querySelector('.pl-ring-arc');
+      const C = 2 * Math.PI * 52;
+      if (arc) { arc.style.strokeDasharray = String(C); arc.style.strokeDashoffset = String(C); }
+      if (prefersReduced) {
+        if (countEl) countEl.textContent = '100';
+        if (arc) arc.style.strokeDashoffset = '0';
+        setTimeout(exitLoader, 240);
+      } else {
+        const duration = 1300, start = performance.now();
+        const tick = (now) => {
+          const t = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - t, 3);
+          if (countEl) countEl.textContent = String(Math.round(eased * 100));
+          if (arc) arc.style.strokeDashoffset = String(C * (1 - eased));
+          if (t < 1) requestAnimationFrame(tick); else exitLoader();
+        };
+        requestAnimationFrame(tick);
+      }
+      setTimeout(() => { if (!exited) exitLoader(); }, 4200); // nunca atrapar al usuario
+    } else {
+      pre.classList.add('is-hidden');
+    }
+  }
 
   /* ---------------------------------------------------------------- */
   /* Cursor glow + spotlight                                          */

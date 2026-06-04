@@ -18,18 +18,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="app.css" />
-  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('jfl-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}})();</script>
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('jfl-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}var rm=false;try{rm=matchMedia('(prefers-reduced-motion:reduce)').matches;}catch(e){}var l=null;try{l=sessionStorage.getItem('jfl-loaded');}catch(e){}d.classList.add((l||rm)?'pl-skip':'pl-active');})();</script>
 </head>
 <body>
   <!-- Preloader -->
-  <div class="preloader" aria-hidden="true">
-    <div class="loader-glow"></div>
-    <div class="loader-card">
-      <div class="loader-orbit"></div>
-      <img src="assets/img/jfl-mark.png" alt="" />
-      <p>Cargando entorno</p>
-      <strong>JFL Studio 360</strong>
-      <div class="loader-line"></div>
+  <div class="preloader" data-preloader aria-hidden="true">
+    <span class="pl-panel pl-panel--top"></span>
+    <span class="pl-panel pl-panel--bottom"></span>
+    <div class="pl-stage">
+      <span class="pl-blob pl-blob--a"></span>
+      <span class="pl-blob pl-blob--b"></span>
+      <div class="pl-ring">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="pl-ring-track" cx="60" cy="60" r="52"></circle>
+          <circle class="pl-ring-arc" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <span class="pl-360">360°</span>
+      </div>
+      <strong class="pl-word">JFL Studio 360</strong>
+      <span class="pl-tag">Diseño · Tecnología · Crecimiento</span>
+      <span class="pl-count"><b data-pl-count>0</b>%</span>
     </div>
   </div>
 
