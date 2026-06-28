@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es" data-theme="dark" class="deck">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JFL Studio 360 | Diseño, tecnología y crecimiento</title>
+  <meta name="description" content="JFL Studio 360 desarrolla marcas, productos y sistemas digitales: branding, diseño industrial, programación, IA, redes y publicidad en un ecosistema visual y digital coherente." />
+  <meta name="theme-color" content="#080813" />
+  <link rel="icon" href="assets/favicon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="JFL Studio 360 | Diseño, tecnología y crecimiento" />
+  <meta property="og:description" content="Branding, diseño industrial, web, IA y growth en un ecosistema visual y digital coherente." />
+  <meta property="og:image" content="assets/img/jfl-full.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="app.css" />
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('jfl-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}var rm=false;try{rm=matchMedia('(prefers-reduced-motion:reduce)').matches;}catch(e){}var l=null;try{l=sessionStorage.getItem('jfl-loaded');}catch(e){}d.classList.add((l||rm)?'pl-skip':'pl-active');})();</script>
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader" data-preloader aria-hidden="true">
+    <span class="pl-panel pl-panel--top"></span>
+    <span class="pl-panel pl-panel--bottom"></span>
+    <div class="pl-stage">
+      <span class="pl-blob pl-blob--a"></span>
+      <span class="pl-blob pl-blob--b"></span>
+      <div class="pl-ring">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="pl-ring-track" cx="60" cy="60" r="52"></circle>
+          <circle class="pl-ring-arc" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <span class="pl-360">360°</span>
+      </div>
+      <strong class="pl-word">JFL Studio 360</strong>
+      <span class="pl-tag">Diseño · Tecnología · Crecimiento</span>
+      <span class="pl-count"><b data-pl-count>0</b>%</span>
+    </div>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#hero" aria-label="JFL Studio 360 — inicio">
+      <img src="assets/img/jfl-mark.png" alt="JFL Studio 360" />
+    </a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#hero">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-ghost header-cta" href="#contacto">Hablemos</a>
+      <button class="theme-toggle" type="button" aria-label="Cambiar tema claro u oscuro" data-theme-toggle>
+        <span class="theme-toggle__icon theme-toggle__icon--sun"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
+        <span class="theme-toggle__icon theme-toggle__icon--moon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.4A8 8 0 0 1 9.6 4 8.1 8.1 0 1 0 20 14.4Z"/></svg></span>
+      </button>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+
+  <!-- Navegación por slides -->
+  <nav class="slide-dots" aria-label="Secciones">
+    <a href="#hero" data-dot aria-label="Inicio"></a>
+    <a href="#servicios" data-dot aria-label="Servicios"></a>
+    <a href="#trabajos" data-dot aria-label="Trabajos"></a>
+    <a href="#contacto" data-dot aria-label="Contacto"></a>
+  </nav>
+
+  <main class="deck" id="inicio">
+
+    <!-- SLIDE 1 · HERO -->
+    <section class="slide slide--hero" id="hero" data-slide>
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-blob hero-blob--1"></span>
+        <span class="hero-blob hero-blob--2"></span>
+        <span class="hero-grid-lines"></span>
+      </div>
+      <div class="slide-inner hero-inner">
+        <img class="hero-logo" src="assets/img/jfl-full.png" alt="Logo de JFL Studio 360" data-reveal="scale" />
+        <p class="eyebrow" data-reveal="fade"><span></span> Estudio de diseño e innovación 360°</p>
+        <h1 data-reveal="up">Marcas, productos y sistemas digitales <span class="text-gradient">listos para crecer.</span></h1>
+        <div class="hero-actions" data-reveal="up" data-reveal-delay="0.15">
+          <a class="btn btn-primary" href="#trabajos" data-magnetic>Ver trabajos <span class="arrow">→</span></a>
+          <a class="btn btn-secondary" href="#contacto" data-magnetic>Hablemos</a>
+        </div>
+      </div>
+      <a class="scroll-hint" href="#servicios" aria-label="Bajar"><span></span></a>
+    </section>
+
+    <!-- SLIDE 2 · SERVICIOS -->
+    <section class="slide slide--services" id="servicios" data-slide>
+      <div class="slide-inner">
+        <div class="slide-head" data-reveal="up">
+          <p class="eyebrow"><span></span> Ecosistema 360</p>
+          <h2>Un sistema integral para construir, lanzar y escalar.</h2>
+        </div>
+        <div class="services-grid">
+          <article class="service-card spotlight" data-reveal="up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h16M7 4.5h10a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3Z"/><path d="m8 14 2.2-2.2 2 2L16.5 9"/></svg><span>01</span><h3>Branding &amp; Identidad</h3><p>Identidad, logotipo, paleta, tipografías y sistema gráfico de marca.</p></article>
+          <article class="service-card spotlight" data-reveal="up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 7.2v9.6L12 21l7.5-4.2V7.2L12 3Z"/><path d="M4.8 7.5 12 11.5l7.2-4M12 21v-9.5"/></svg><span>02</span><h3>Diseño industrial</h3><p>Concepto, morfología, renders, planos técnicos y modelados 3D.</p></article>
+          <article class="service-card spotlight" data-reveal="up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg><span>03</span><h3>Web, código &amp; IA</h3><p>Landing pages, sitios responsive, automatizaciones e IA aplicada.</p></article>
+          <article class="service-card spotlight" data-reveal="up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16"/><path d="m7 15 4-4 3 3 5-7"/><path d="M16 7h3v3"/></svg><span>04</span><h3>Redes &amp; growth</h3><p>Community management, estrategia de contenido, Meta y Google Ads.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 · TRABAJOS -->
+    <section class="slide slide--works" id="trabajos" data-slide>
+      <div class="slide-inner">
+        <div class="slide-head" data-reveal="up">
+          <p class="eyebrow"><span></span> Trabajos destacados</p>
+          <h2>Una selección del estudio.</h2>
+        </div>
+        <div class="hgallery-wrap" data-hgallery data-reveal="fade">
+          <div class="hgallery">
+            <article class="hcard"><div class="hcard-media is-logo"><img src="assets/img/portfolio-244-logo.webp" alt="Logo de 244 Motos" loading="lazy" /></div><div class="hcard-body"><div class="tags"><span>Branding</span><span>Racing</span></div><h3>244 Motos</h3><p>Identidad con estética deportiva y sistema gráfico comercial.</p></div></article>
+            <article class="hcard"><div class="hcard-media"><img src="assets/img/portfolio-hidratacion-01.webp" alt="Puesto de hidratación" loading="lazy" /></div><div class="hcard-body"><div class="tags"><span>Producto</span><span>Render</span></div><h3>Puesto de hidratación</h3><p>Estación circular para eventos con estética aerodinámica.</p></div></article>
+            <article class="hcard"><div class="hcard-media"><img src="assets/img/portfolio-lavin-situacion.webp" alt="Sistema LAVIN" loading="lazy" /></div><div class="hcard-body"><div class="tags"><span>Producto</span><span>Modular</span></div><h3>LAVIN</h3><p>Plataforma modular, versátil y escalable para distintos usos.</p></div></article>
+            <article class="hcard"><div class="hcard-media"><img src="assets/img/portfolio-logistic-system.webp" alt="Logistic Point" loading="lazy" /></div><div class="hcard-body"><div class="tags"><span>Redes</span><span>Contenido</span></div><h3>Logistic Point</h3><p>Dirección visual para redes de logística internacional.</p></div></article>
+            <article class="hcard"><div class="hcard-media is-logo" style="background:#0d1118"><img src="assets/img/portfolio-bigcode-dark.webp" alt="BigCode Studio" loading="lazy" /></div><div class="hcard-body"><div class="tags"><span>Web</span><span>Identidad</span></div><h3>BigCode Studio</h3><p>Identidad para estudio digital con estética tecnológica.</p></div></article>
+          </div>
+          <div class="hgallery-nav">
+            <span class="hgallery-hint"><span class="drag-dot"></span> Arrastrá para explorar</span>
+            <div class="hgallery-arrows">
+              <button class="slider-arrow" type="button" data-hprev aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <button class="slider-arrow" type="button" data-hnext aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 · CONTACTO -->
+    <section class="slide slide--contact" id="contacto" data-slide>
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-blob hero-blob--2"></span>
+      </div>
+      <div class="slide-inner contact-inner" data-reveal="up">
+        <p class="eyebrow"><span></span> Próximo proyecto</p>
+        <h2>Convertí una idea en un sistema visual, digital y comercial.</h2>
+        <p class="contact-lead">Contame qué querés desarrollar y armamos una propuesta con identidad, producto, web o crecimiento según la etapa de tu proyecto.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="mailto:jflstudio360@gmail.com?subject=Quiero%20trabajar%20con%20JFL%20Studio%20360" data-magnetic>Hablemos <span class="arrow">→</span></a>
+          <a class="instagram-link" href="https://www.instagram.com/jfl_studio360" target="_blank" rel="noopener" aria-label="Instagram de JFL Studio 360"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17.5 6.8h.01"/></svg></a>
+        </div>
+        <div class="contact-foot">
+          <a href="mailto:jflstudio360@gmail.com">jflstudio360@gmail.com</a>
+          <small>© <span data-year></span> JFL Studio 360. Todos los derechos reservados.</small>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/vendor/motion.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
