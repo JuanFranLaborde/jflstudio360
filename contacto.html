@@ -1,172 +1,167 @@
 <!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contacto | JFL Studio 360</title>
-  <meta name="description" content="Contá tu proyecto a JFL Studio 360. Branding, producto, web, IA y growth. Escribinos por email o Instagram." />
-  <meta name="theme-color" content="#080813" />
+  <meta name="description" content="Hablemos de tu marca. Escribile a JFL Studio 360: charlamos y te pasamos una propuesta por escrito." />
+  <meta name="theme-color" content="#FBF3E3" />
   <link rel="icon" href="assets/favicon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Contacto | JFL Studio 360" />
-  <meta property="og:description" content="Contá qué querés desarrollar y armamos una propuesta a medida." />
+  <meta property="og:description" content="Hablemos de tu marca. Escribile a JFL Studio 360: charlamos y te pasamos una propuesta por escrito." />
   <meta property="og:image" content="assets/img/jfl-full.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300..900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="app.css" />
-  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('jfl-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}var rm=false;try{rm=matchMedia('(prefers-reduced-motion:reduce)').matches;}catch(e){}var l=null;try{l=sessionStorage.getItem('jfl-loaded');}catch(e){}d.classList.add((l||rm)?'pl-skip':'pl-active');})();</script>
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('jfl-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}try{if(!sessionStorage.getItem('jfl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('intro-on');}catch(e){}})();</script>
 </head>
 <body>
-  <div class="preloader" data-preloader aria-hidden="true">
-    <span class="pl-panel pl-panel--top"></span>
-    <span class="pl-panel pl-panel--bottom"></span>
-    <div class="pl-stage">
-      <span class="pl-blob pl-blob--a"></span>
-      <span class="pl-blob pl-blob--b"></span>
-      <div class="pl-ring">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <circle class="pl-ring-track" cx="60" cy="60" r="52"></circle>
-          <circle class="pl-ring-arc" cx="60" cy="60" r="52"></circle>
-        </svg>
-        <span class="pl-360">360°</span>
-      </div>
-      <strong class="pl-word">JFL Studio 360</strong>
-      <span class="pl-tag">Diseño · Tecnología · Crecimiento</span>
-      <span class="pl-count"><b data-pl-count>0</b>%</span>
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <div class="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <p class="intro-sig">JFL Studio 360<span class="dot">.</span></p>
+      <span class="intro-line"></span>
+      <p class="label intro-label">Estudio de diseño integral</p>
     </div>
   </div>
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <div class="cursor-glow" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="page-veil" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="JFL Studio 360 — inicio"><img src="assets/img/jfl-mark.png" alt="JFL Studio 360" /></a>
-    <nav class="nav-links" aria-label="Navegación principal">
-      <a href="index.html">Inicio</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="trabajos.html">Trabajos</a>
-      <a href="estudio.html">Estudio</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-    <div class="header-actions">
-      <a class="btn btn-ghost header-cta" href="contacto.html">Hablemos</a>
-      <button class="theme-toggle" type="button" aria-label="Cambiar tema claro u oscuro" data-theme-toggle>
-        <span class="theme-toggle__icon theme-toggle__icon--sun"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
-        <span class="theme-toggle__icon theme-toggle__icon--moon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.4A8 8 0 0 1 9.6 4 8.1 8.1 0 1 0 20 14.4Z"/></svg></span>
-      </button>
-      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="JFL Studio 360 — Inicio"><img src="assets/img/jfl-mark.png" alt="JFL Studio 360" width="944" height="515" /></a>
+      <nav class="nav" id="site-nav" aria-label="Principal">
+        <a href="index.html" class="nav-home"><span class="nav-num">01</span>Inicio</a>
+        <a href="servicios.html"><span class="nav-num">02</span>Servicios</a>
+        <a href="trabajos.html"><span class="nav-num">03</span>Trabajos</a>
+        <a href="estudio.html"><span class="nav-num">04</span>Estudio</a>
+        <a href="contacto.html" aria-current="page"><span class="nav-num">05</span>Contacto</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-switch" type="button" data-theme-toggle aria-label="Cambiar entre tema papel y tinta"><span data-t="light">Papel</span><i>/</i><span data-t="dark">Tinta</span></button>
+        <a class="btn btn--sm" href="contacto.html">Escribime</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" data-menu>Menú</button>
+      </div>
     </div>
   </header>
 
-  <main>
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-      <div class="container">
-        <p class="breadcrumb"><a href="index.html">Inicio</a> <i></i> Contacto</p>
-        <h1 data-reveal="blur">Convirtamos tu idea <span class="text-gradient">en un sistema.</span></h1>
-        <p class="page-lead" data-reveal="up" data-reveal-delay="0.1">Contame qué querés desarrollar y armamos una propuesta con identidad, producto, web o crecimiento según la etapa de tu proyecto.</p>
+  <main id="main">
+    <section class="sf-papel page-hero" aria-labelledby="page-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Contacto</span><span class="label num">Primer mensaje</span></div>
+        <h1 class="duo duo--xl" id="page-title" data-reveal><span class="duo-a">Hablemos</span><span class="duo-b">de tu marca</span></h1>
+        <div class="page-hero-grid">
+          <p class="serif-lead" data-reveal>Empezar es simple: me escribís, charlamos y te paso una propuesta por escrito.</p>
+          <p class="body" data-reveal>Contame qué querés desarrollar y en qué etapa está tu proyecto: identidad, producto, web o contenido.</p>
+        </div>
       </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section class="section-pad">
-      <div class="container contact-grid">
-        <div class="contact-card" data-reveal="left">
-          <p class="eyebrow"><span></span> Escribime</p>
-          <h2 style="font-family:var(--font-display);letter-spacing:-.03em;color:var(--ink);margin:6px 0 22px;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.05">Contame sobre tu proyecto</h2>
-          <form class="contact-form" data-contact-form novalidate>
-            <div class="field row2">
+    <section class="sf-crema section" aria-labelledby="form-title">
+      <div class="wrap">
+        <div class="topline"><h2 class="label" id="form-title">Escribime</h2><span class="label num">01 / 02</span></div>
+        <div class="contact">
+          <form class="form" data-contact-form data-reveal>
+            <div class="field-row">
               <div class="field">
-                <label for="cf-name">Nombre</label>
+                <label class="label" for="cf-name">Nombre</label>
                 <input id="cf-name" name="name" type="text" placeholder="Tu nombre" autocomplete="name" required />
               </div>
               <div class="field">
-                <label for="cf-email">Email</label>
+                <label class="label" for="cf-email">Email</label>
                 <input id="cf-email" name="email" type="email" placeholder="tu@email.com" autocomplete="email" required />
               </div>
             </div>
+            <fieldset class="field">
+              <legend class="label">Qué necesitás</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="type" value="Identidad" /><span>Identidad</span></label>
+                <label class="chip"><input type="radio" name="type" value="Producto y 3D" /><span>Producto y 3D</span></label>
+                <label class="chip"><input type="radio" name="type" value="Web, código e IA" /><span>Web, código e IA</span></label>
+                <label class="chip"><input type="radio" name="type" value="Contenido y pauta" /><span>Contenido y pauta</span></label>
+                <label class="chip"><input type="radio" name="type" value="Proyecto integral" /><span>Proyecto integral</span></label>
+                <label class="chip"><input type="radio" name="type" value="Todavía no sé" /><span>Todavía no sé</span></label>
+              </div>
+            </fieldset>
             <div class="field">
-              <label for="cf-type">Tipo de proyecto</label>
-              <select id="cf-type" name="type">
-                <option value="Branding & Identidad">Branding &amp; Identidad</option>
-                <option value="Diseño industrial & producto">Diseño industrial &amp; producto</option>
-                <option value="Web, código & IA">Web, código &amp; IA</option>
-                <option value="Redes, contenido & growth">Redes, contenido &amp; growth</option>
-                <option value="Proyecto 360 integral">Proyecto 360 integral</option>
-                <option value="Otro / no estoy seguro">Otro / no estoy seguro</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="cf-message">Mensaje</label>
-              <textarea id="cf-message" name="message" placeholder="Contame qué necesitás, en qué etapa estás y cualquier referencia que tengas…"></textarea>
+              <label class="label" for="cf-message">Mensaje</label>
+              <textarea id="cf-message" name="message" placeholder="Qué hacés, qué tenés hoy y qué te gustaría lograr…" required></textarea>
             </div>
             <div class="form-foot">
-              <button class="btn btn-primary" type="submit" data-magnetic>Enviar consulta <span class="arrow">→</span></button>
-              <span class="form-note" data-form-status>Se abrirá tu correo con el mensaje listo para enviar.</span>
+              <button class="btn btn--solid" type="submit">Enviar consulta <span class="arr" aria-hidden="true">→</span></button>
+              <p class="form-note" data-form-status aria-live="polite">Se abre tu correo con el mensaje listo para enviar.</p>
             </div>
           </form>
-        </div>
 
-        <aside class="contact-aside" data-reveal="right">
-          <a class="contact-method" href="mailto:jflstudio360@gmail.com">
-            <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
-            <span><h3>Email</h3><p>jflstudio360@gmail.com</p></span>
-          </a>
-          <a class="contact-method" href="https://www.instagram.com/jfl_studio360" target="_blank" rel="noopener">
-            <span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17.5 6.8h.01"/></svg></span>
-            <span><h3>Instagram</h3><p>@jfl_studio360</p></span>
-          </a>
-          <div class="contact-tips">
-            <h4>Para agilizar</h4>
-            <ul>
-              <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Qué hacés y a quién te dirigís</li>
-              <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Etapa del proyecto y objetivo</li>
-              <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Referencias o ejemplos que te gusten</li>
-            </ul>
-          </div>
-        </aside>
+          <aside class="aside" data-reveal>
+            <div class="aside-block">
+              <p class="label">Qué mandarme</p>
+              <ul class="dash">
+                <li>Qué hacés y a quién le vendés</li>
+                <li>Qué tenés hoy: logo, redes, web</li>
+                <li>Qué te gustaría lograr</li>
+                <li>Dos o tres referencias que te gusten</li>
+                <li>Cuándo querés lanzar</li>
+              </ul>
+            </div>
+            <div class="aside-block">
+              <p class="label">Directo</p>
+              <div class="direct">
+                <a href="mailto:jflstudio360@gmail.com"><span class="label">Email</span><strong>jflstudio360@gmail.com</strong><span class="arr" aria-hidden="true">→</span></a>
+                <a href="https://www.instagram.com/jfl_studio360" target="_blank" rel="noopener"><span class="label">Instagram</span><strong>@jfl_studio360</strong><span class="arr" aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="sf-papel section" aria-labelledby="ce-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Paso a paso</span><span class="label num">02 / 02</span></div>
+        <div class="head">
+          <h2 class="duo" id="ce-title" data-reveal><span class="duo-a">Cómo</span><span class="duo-b">empezamos</span></h2>
+        </div>
+        <ol class="rows" data-reveal>
+          <li class="row"><span class="row-num">01</span><div><h3 class="row-title">Me escribís</h3><p class="row-text">Por mensaje o desde la web, con una idea general.</p></div><span></span></li>
+          <li class="row"><span class="row-num">02</span><div><h3 class="row-title">Charlamos</h3><p class="row-text">Una charla corta para entender qué necesitás.</p></div><span></span></li>
+          <li class="row"><span class="row-num">03</span><div><h3 class="row-title">Propuesta</h3><p class="row-text">Alcance, tiempos y presupuesto, por escrito.</p></div><span></span></li>
+        </ol>
       </div>
     </section>
   </main>
 
-  <footer class="mega-footer">
-    <div class="container">
-      <div class="mega-grid">
-        <div class="mega-brand">
-          <img src="assets/img/jfl-mark.png" alt="JFL Studio 360" />
-          <p>Branding, producto, tecnología y growth en un ecosistema visual y digital coherente.</p>
-          <div class="social">
-            <a class="instagram-link" href="https://www.instagram.com/jfl_studio360" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17.5 6.8h.01"/></svg></a>
-            <a class="instagram-link" href="mailto:jflstudio360@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></a>
+  <div class="sf-tinta closing closing--plain">
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <p class="signature">JFL Studio 360<span class="dot">.</span></p>
+            <p class="body">Estudio de diseño integral. Identidad, producto, web y contenido con una misma mirada.</p>
+          </div>
+          <nav class="footer-col" aria-label="Páginas">
+            <p class="label">Páginas</p>
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="trabajos.html">Trabajos</a>
+            <a href="estudio.html">Estudio</a>
+            <a href="contacto.html">Contacto</a>
+          </nav>
+          <div class="footer-col">
+            <p class="label">Contacto</p>
+            <a href="mailto:jflstudio360@gmail.com">jflstudio360@gmail.com</a>
+            <a href="https://www.instagram.com/jfl_studio360" target="_blank" rel="noopener">Instagram · @jfl_studio360</a>
           </div>
         </div>
-        <div class="mega-col">
-          <h4>Navegación</h4>
-          <a href="index.html">Inicio</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="trabajos.html">Trabajos</a>
-          <a href="estudio.html">Estudio</a>
-          <a href="contacto.html">Contacto</a>
-        </div>
-        <div class="mega-col">
-          <h4>Servicios</h4>
-          <a href="servicios.html">Branding &amp; Identidad</a>
-          <a href="servicios.html">Diseño industrial</a>
-          <a href="servicios.html">Web, código &amp; IA</a>
-          <a href="servicios.html">Redes &amp; growth</a>
+        <div class="footer-bottom">
+          <p class="label">© <span data-year>2026</span> JFL Studio 360</p>
+          <a class="label to-top" href="#top">Volver arriba ↑</a>
         </div>
       </div>
-      <div class="mega-bottom">
-        <small>© <span data-year></span> JFL Studio 360. Todos los derechos reservados.</small>
-        <a href="mailto:jflstudio360@gmail.com">jflstudio360@gmail.com</a>
-      </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
-  <script src="assets/vendor/motion.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

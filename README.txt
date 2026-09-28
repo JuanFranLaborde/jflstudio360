@@ -1,30 +1,42 @@
-JFL Studio 360 — Landing V7 · Multi-página + Motion
+JFL Studio 360 — Sitio V8 · Sistema JFL 360
+"Mismo estudio. Otro criterio."
 
-Qué cambió en esta versión:
-- El sitio pasó de una sola página a una experiencia MULTI-PÁGINA estilo Apple:
-    index.html      -> Inicio (hero cinemático, marquee, stats, statement,
-                       servicios, showcase, galería destacados, método, formación, CTA)
-    servicios.html  -> Servicios en detalle (filas alternadas) + Método (sticky storytelling)
-    trabajos.html   -> Slider destacados + portfolio filtrable completo
-    estudio.html    -> Sobre el estudio + stats + formación (certificaciones)
-    contacto.html   -> Formulario (compone un mailto) + métodos de contacto
-- Animaciones con la librería Motion (vendorizada en assets/vendor/motion.js):
-    reveals al scroll con stagger, títulos con máscara, parallax, hero cinemático,
-    botones magnéticos, contadores, galería horizontal con scroll-snap.
-- Transiciones entre páginas con la View Transitions API (+ velo de respaldo).
-- Se conservan tema claro/oscuro, menú responsive y la protección básica de imágenes.
+El sitio se rehízo sobre el sistema de diseño del rediseño 2026 (dossier de marca
+y kit de lanzamiento de Instagram), para que la web y las redes se vean como una
+sola marca.
 
-Archivos principales:
-- index.html, servicios.html, trabajos.html, estudio.html, contacto.html
-- styles.css        (sistema base de componentes)
-- app.css           (capa V7: estilo Apple, multi-página, transiciones)
-- script.js         (motor de interacción con Motion)
-- assets/vendor/motion.js  (Motion v12 vendorizado, expone window.Motion)
-- assets/img/...
+Reglas del sistema aplicadas:
+- Tres superficies: papel (#FBF3E3 / crema #F5E8D0), tinta (#151338) y foto
+  (blanco y negro cálido).
+- Navy #1D2252 es la tinta del texto y el único fondo oscuro.
+- Coral #E8614A como acento: una palabra, una línea o un punto por pieza.
+- Dos familias: Archivo (grotesca, firme y directa) + EB Garamond (serif de firma).
+- Titulares en dos tonos: palabra firme en navy + resto en greige (#857A6B).
+- Sin checks ni íconos: guiones, números y aire.
 
-Notas técnicas:
-- Sitio estático, sin build. Motion se carga como <script> global (window.Motion),
-  por lo que funciona offline y se publica con Netlify (publish = ".").
-- Sin JS o con prefers-reduced-motion el contenido permanece visible (degradado seguro).
+Páginas:
+- index.html      Portada, Qué hacemos, Trabajos en foco (carrusel formato 4:5),
+                  Cómo pensamos, Manifiesto y cierre.
+- servicios.html  Las cuatro disciplinas con foto, alcance y qué incluye,
+                  y el proceso "Así nace una marca" en seis etapas.
+- trabajos.html   Índice de proyectos con filtros (Identidad, Producto, Web,
+                  Contenido). Acepta ?f=producto para abrir ya filtrado.
+- estudio.html    El estudio en números, Caso 00 (nos rediseñamos), paleta,
+                  tipografía y formación técnica.
+- contacto.html   Formulario (arma el mail listo para enviar), qué mandarme
+                  y cómo empezamos.
 
-Listo para subir a Netlify.
+Archivos:
+- styles.css   Sistema completo: tokens, superficies, componentes y responsive.
+- script.js    Interacción sin dependencias: intro, tema papel/tinta, menú,
+               apariciones al scroll, números, carrusel, filtros y formulario.
+- assets/img/foto-*.webp  Fotos B/N cálidas tomadas del kit de lanzamiento.
+
+Notas:
+- Tema "Papel" por defecto; "Tinta" (oscuro) se elige desde el header y se recuerda.
+- Transiciones entre páginas con View Transitions (si el navegador no las soporta,
+  la navegación es normal). Con "reducir movimiento" todo aparece sin animación.
+- La V7 usaba la librería Motion; ya no hace falta. package.json y node_modules
+  quedaron de esa versión y se pueden borrar.
+
+Sitio estático, sin build. Listo para Netlify (publish = ".").

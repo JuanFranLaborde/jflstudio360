@@ -1,194 +1,194 @@
 <!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Estudio | JFL Studio 360</title>
-  <meta name="description" content="JFL Studio 360: diseño, código y criterio estratégico en una misma mirada. Formación técnica en Python, Web, JavaScript y React." />
-  <meta name="theme-color" content="#080813" />
+  <meta name="description" content="JFL Studio 360: diseño, código y criterio. Cómo rediseñamos nuestra propia marca, el sistema de color y tipografía y la formación técnica del estudio." />
+  <meta name="theme-color" content="#FBF3E3" />
   <link rel="icon" href="assets/favicon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Estudio | JFL Studio 360" />
-  <meta property="og:description" content="Diseño, tecnología y estrategia con base técnica real." />
+  <meta property="og:description" content="JFL Studio 360: diseño, código y criterio. Cómo rediseñamos nuestra propia marca, el sistema de color y tipografía y la formación técnica del estudio." />
   <meta property="og:image" content="assets/img/jfl-full.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300..900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="app.css" />
-  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('jfl-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}var rm=false;try{rm=matchMedia('(prefers-reduced-motion:reduce)').matches;}catch(e){}var l=null;try{l=sessionStorage.getItem('jfl-loaded');}catch(e){}d.classList.add((l||rm)?'pl-skip':'pl-active');})();</script>
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('jfl-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}try{if(!sessionStorage.getItem('jfl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('intro-on');}catch(e){}})();</script>
 </head>
 <body>
-  <div class="preloader" data-preloader aria-hidden="true">
-    <span class="pl-panel pl-panel--top"></span>
-    <span class="pl-panel pl-panel--bottom"></span>
-    <div class="pl-stage">
-      <span class="pl-blob pl-blob--a"></span>
-      <span class="pl-blob pl-blob--b"></span>
-      <div class="pl-ring">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <circle class="pl-ring-track" cx="60" cy="60" r="52"></circle>
-          <circle class="pl-ring-arc" cx="60" cy="60" r="52"></circle>
-        </svg>
-        <span class="pl-360">360°</span>
-      </div>
-      <strong class="pl-word">JFL Studio 360</strong>
-      <span class="pl-tag">Diseño · Tecnología · Crecimiento</span>
-      <span class="pl-count"><b data-pl-count>0</b>%</span>
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <div class="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <p class="intro-sig">JFL Studio 360<span class="dot">.</span></p>
+      <span class="intro-line"></span>
+      <p class="label intro-label">Estudio de diseño integral</p>
     </div>
   </div>
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <div class="cursor-glow" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="page-veil" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="JFL Studio 360 — inicio"><img src="assets/img/jfl-mark.png" alt="JFL Studio 360" /></a>
-    <nav class="nav-links" aria-label="Navegación principal">
-      <a href="index.html">Inicio</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="trabajos.html">Trabajos</a>
-      <a href="estudio.html">Estudio</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-    <div class="header-actions">
-      <a class="btn btn-ghost header-cta" href="contacto.html">Hablemos</a>
-      <button class="theme-toggle" type="button" aria-label="Cambiar tema claro u oscuro" data-theme-toggle>
-        <span class="theme-toggle__icon theme-toggle__icon--sun"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
-        <span class="theme-toggle__icon theme-toggle__icon--moon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.4A8 8 0 0 1 9.6 4 8.1 8.1 0 1 0 20 14.4Z"/></svg></span>
-      </button>
-      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="JFL Studio 360 — Inicio"><img src="assets/img/jfl-mark.png" alt="JFL Studio 360" width="944" height="515" /></a>
+      <nav class="nav" id="site-nav" aria-label="Principal">
+        <a href="index.html" class="nav-home"><span class="nav-num">01</span>Inicio</a>
+        <a href="servicios.html"><span class="nav-num">02</span>Servicios</a>
+        <a href="trabajos.html"><span class="nav-num">03</span>Trabajos</a>
+        <a href="estudio.html" aria-current="page"><span class="nav-num">04</span>Estudio</a>
+        <a href="contacto.html"><span class="nav-num">05</span>Contacto</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-switch" type="button" data-theme-toggle aria-label="Cambiar entre tema papel y tinta"><span data-t="light">Papel</span><i>/</i><span data-t="dark">Tinta</span></button>
+        <a class="btn btn--sm" href="contacto.html">Escribime</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" data-menu>Menú</button>
+      </div>
     </div>
   </header>
 
-  <main>
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-      <div class="container">
-        <p class="breadcrumb"><a href="index.html">Inicio</a> <i></i> Estudio</p>
-        <h1 data-reveal="blur">Diseño, código y <span class="text-gradient">criterio estratégico.</span></h1>
-        <p class="page-lead" data-reveal="up" data-reveal-delay="0.1">JFL Studio 360 combina sensibilidad visual, desarrollo web, pensamiento de producto y herramientas digitales en una misma mirada integral.</p>
-        <div class="hero-meta" data-reveal="up" data-reveal-delay="0.2">
-          <span>Diseño</span><span>Producto</span><span>Código</span><span>IA</span><span>Estrategia</span>
+  <main id="main">
+    <section class="sf-papel page-hero" aria-labelledby="page-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Estudio</span><span class="label num">2026</span></div>
+        <h1 class="duo duo--xl" id="page-title" data-reveal><span class="duo-a">Diseño, código</span><span class="duo-b">y criterio</span></h1>
+        <div class="page-hero-grid">
+          <p class="serif-lead" data-reveal>Un estudio de diseño integral: identidad, producto, web y contenido con la misma mirada.</p>
+          <p class="body" data-reveal>JFL Studio 360 nace de cruzar diseño, tecnología y estrategia para que cada proyecto crezca como un sistema coherente. La base técnica —programación, producto e IA— respalda cada decisión visual.</p>
+        </div>
+        <div class="figures" style="margin-top:clamp(56px,7vw,104px)" data-reveal>
+          <div class="figure"><strong data-count="6" data-suffix="+">6+</strong><span>Proyectos aplicados</span></div>
+          <div class="figure"><strong data-count="4" data-suffix="">4</strong><span>Disciplinas integradas</span></div>
+          <div class="figure"><strong data-count="5" data-suffix="">5</strong><span>Certificaciones técnicas</span></div>
+          <div class="figure"><strong data-count="100" data-suffix="%">100%</strong><span>Sistemas a medida</span></div>
         </div>
       </div>
     </section>
 
-    <!-- SOBRE EL ESTUDIO -->
-    <section class="section-pad">
-      <div class="container">
-        <div class="feature-row">
-          <div class="feature-text" data-reveal="left">
-            <p class="eyebrow"><span></span> Sobre el estudio</p>
-            <h2>Un estudio integral, no una pieza aislada.</h2>
-            <p>JFL Studio 360 nace de cruzar diseño, tecnología y estrategia para que cada proyecto crezca como un sistema coherente: branding, producto, web e IA, redes y growth conviven bajo una misma dirección.</p>
-            <ul class="feature-list">
-              <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Una mirada que conecta diseño y negocio</li>
-              <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Base técnica real de programación y producto</li>
-              <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Sistemas pensados para escalar</li>
-            </ul>
+    <!-- Caso 00 -->
+    <section class="sf-crema section" id="caso-00" aria-labelledby="c0-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Caso 00</span><span class="label num">Antes y después</span></div>
+        <div class="head">
+          <h2 class="duo" id="c0-title" data-reveal><span class="duo-a">Nos</span><span class="duo-b">rediseñamos</span></h2>
+          <div class="head-side" data-reveal>
+            <p class="serif-lead">Lo que le recomendamos a cada cliente, aplicado a nuestra propia marca.</p>
           </div>
-          <figure class="feature-media is-brand" data-reveal="scale"><span class="glow"></span><img src="assets/img/jfl-full.png" alt="Logo de JFL Studio 360" loading="lazy" /></figure>
         </div>
+        <p class="body" style="margin-bottom:clamp(40px,5vw,72px);max-width:62ch" data-reveal>Durante un tiempo nuestra marca usó mucho color, muchos recursos y ningún sistema que los ordenara. Hicimos lo que le recomendamos a cada cliente: volver al logo, sacar lo que sobra y definir reglas.</p>
+        <p class="label" style="margin-bottom:18px">Qué cambiamos</p>
+        <ol class="changes" data-reveal>
+          <li class="change"><span class="change-before">Cuatro fondos</span><span class="change-arr" aria-hidden="true">→</span><span class="change-after">Papel, tinta y foto</span></li>
+          <li class="change"><span class="change-before">Coral en todo</span><span class="change-arr" aria-hidden="true">→</span><span class="change-after">Coral como acento</span></li>
+          <li class="change"><span class="change-before">Letras decorativas</span><span class="change-arr" aria-hidden="true">→</span><span class="change-after">Grotesca y serif</span></li>
+          <li class="change"><span class="change-before">Checks e íconos</span><span class="change-arr" aria-hidden="true">→</span><span class="change-after">Guiones, números y aire</span></li>
+          <li class="change"><span class="change-before">Fotos a color</span><span class="change-arr" aria-hidden="true">→</span><span class="change-after">Blanco y negro cálido</span></li>
+        </ol>
       </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats-section">
-      <div class="container stats-grid">
-        <div class="stat" data-reveal="up"><strong data-count="6" data-suffix="+">0</strong><span>Proyectos aplicados</span></div>
-        <div class="stat" data-reveal="up"><strong data-count="5">0</strong><span>Áreas integradas</span></div>
-        <div class="stat" data-reveal="up"><strong data-count="5" data-suffix="+">0</strong><span>Certificaciones técnicas</span></div>
-        <div class="stat" data-reveal="up"><strong data-count="100" data-suffix="%">0</strong><span>Sistemas a medida</span></div>
-      </div>
-    </section>
-
-    <!-- FORMACIÓN -->
-    <section class="section-pad formation-section">
-      <div class="container">
-        <div class="section-head" data-reveal="up">
-          <p class="eyebrow"><span></span> Formación técnica</p>
-          <h2>La base técnica detrás de cada decisión visual.</h2>
-          <p>La formación permite combinar sensibilidad visual, desarrollo web, pensamiento de producto y herramientas digitales en proyectos reales.</p>
-        </div>
-        <div class="formation-grid">
-          <article class="formation-card" data-reveal="up">
-            <figure class="formation-media"><img src="assets/img/cert-python.webp" alt="Certificado Python" loading="lazy" /></figure>
-            <div class="formation-body"><h3>Python</h3><p>15 de junio de 2022</p></div>
-          </article>
-          <article class="formation-card" data-reveal="up">
-            <figure class="formation-media"><img src="assets/img/cert-web.webp" alt="Certificado Desarrollo Web" loading="lazy" /></figure>
-            <div class="formation-body"><h3>Desarrollo Web</h3><p>23 de febrero de 2023</p></div>
-          </article>
-          <article class="formation-card" data-reveal="up">
-            <figure class="formation-media"><img src="assets/img/cert-javascript.webp" alt="Certificado JavaScript" loading="lazy" /></figure>
-            <div class="formation-body"><h3>JavaScript</h3><p>09 de mayo de 2023</p></div>
-          </article>
-          <article class="formation-card" data-reveal="up">
-            <figure class="formation-media"><img src="assets/img/cert-react.webp" alt="Certificado React JS" loading="lazy" /></figure>
-            <div class="formation-body"><h3>React JS</h3><p>04 de julio de 2023</p></div>
-          </article>
-          <article class="formation-card" data-reveal="up">
-            <figure class="formation-media"><img src="assets/img/cert-frontend.webp" alt="Certificado carrera de Desarrollo Frontend React" loading="lazy" /></figure>
-            <div class="formation-body"><h3>Carrera Frontend React</h3><p>04 de julio de 2023</p></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section-pad cta-section">
-      <div class="container">
-        <div class="cta-card" data-reveal="up">
-          <div>
-            <p class="eyebrow"><span></span> Trabajemos juntos</p>
-            <h2>Llevemos tu marca al siguiente nivel.</h2>
-            <p>Diseño con criterio técnico y estratégico para construir, lanzar y escalar tu proyecto.</p>
+    <!-- Paleta y tipografía -->
+    <section class="sf-papel section" aria-labelledby="pal-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">La paleta sale del logo</span><span class="label num">Sistema | JFL</span></div>
+        <div class="head">
+          <h2 class="duo" id="pal-title" data-reveal><span class="duo-a">Una regla</span><span class="duo-b">por color</span></h2>
+          <div class="head-side" data-reveal>
+            <p class="body">Crema, navy y coral vienen del logotipo. Lo nuevo no es el color, es la disciplina: el color funciona cuando escasea.</p>
           </div>
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="contacto.html" data-magnetic>Contactar <span class="arrow">→</span></a>
-            <a class="btn btn-secondary" href="trabajos.html" data-magnetic>Ver trabajos</a>
+        </div>
+        <div class="palette">
+          <figure class="palette-logo" data-reveal><img src="assets/img/jfl-full.png" alt="Logotipo de JFL Studio 360" width="1300" height="954" loading="lazy" /></figure>
+          <div class="swatches">
+            <div class="swatch swatch--crema" data-reveal><span class="swatch-chip"></span><h3>Crema</h3><p>El papel. Fondo de casi todo.</p><span class="label num">#F5E8D0</span></div>
+            <div class="swatch swatch--navy" data-reveal><span class="swatch-chip"></span><h3>Navy</h3><p>La tinta y el único fondo oscuro.</p><span class="label num">#1D2252</span></div>
+            <div class="swatch swatch--coral" data-reveal><span class="swatch-chip"></span><h3>Coral</h3><p>Una palabra, una línea o un punto.</p><span class="label num">#E8614A</span></div>
           </div>
+        </div>
+
+        <div class="topline" style="margin-top:clamp(80px,10vw,144px)"><span class="label">Tipografía</span><span class="label">Dos familias alcanzan</span></div>
+        <div class="specimens">
+          <div class="specimen" data-reveal><p class="specimen-word specimen-word--sans">Confianza</p><p class="label">Grotesca — firme, directa</p></div>
+          <div class="specimen" data-reveal><p class="specimen-word specimen-word--serif">Confianza</p><p class="label">Serif de transición — cálida, clásica</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formación -->
+    <section class="sf-crema section" aria-labelledby="fo-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Formación técnica</span><span class="label num">05 certificaciones</span></div>
+        <div class="head">
+          <h2 class="duo" id="fo-title" data-reveal><span class="duo-a">La base</span><span class="duo-b">técnica</span></h2>
+          <div class="head-side" data-reveal>
+            <p class="body">Programación y producto detrás de cada decisión visual: formación que permite diseñar con criterio de código.</p>
+          </div>
+        </div>
+        <div class="certs">
+          <figure class="cert" data-reveal>
+            <div class="frame"><img src="assets/img/cert-python.webp" alt="Certificado de Python" width="2048" height="1327" loading="lazy" /></div>
+            <figcaption><span class="row-num">01</span><h3>Python</h3><span class="label">15 · 06 · 2022</span></figcaption>
+          </figure>
+          <figure class="cert" data-reveal>
+            <div class="frame"><img src="assets/img/cert-web.webp" alt="Certificado de Desarrollo Web" width="1200" height="778" loading="lazy" /></div>
+            <figcaption><span class="row-num">02</span><h3>Desarrollo web</h3><span class="label">23 · 02 · 2023</span></figcaption>
+          </figure>
+          <figure class="cert" data-reveal>
+            <div class="frame"><img src="assets/img/cert-javascript.webp" alt="Certificado de JavaScript" width="1200" height="778" loading="lazy" /></div>
+            <figcaption><span class="row-num">03</span><h3>JavaScript</h3><span class="label">09 · 05 · 2023</span></figcaption>
+          </figure>
+          <figure class="cert" data-reveal>
+            <div class="frame"><img src="assets/img/cert-react.webp" alt="Certificado de React JS" width="1200" height="778" loading="lazy" /></div>
+            <figcaption><span class="row-num">04</span><h3>React JS</h3><span class="label">04 · 07 · 2023</span></figcaption>
+          </figure>
+          <figure class="cert" data-reveal>
+            <div class="frame"><img src="assets/img/cert-frontend.webp" alt="Certificado de la carrera de Desarrollo Frontend React" width="1200" height="778" loading="lazy" /></div>
+            <figcaption><span class="row-num">05</span><h3>Carrera Frontend React</h3><span class="label">04 · 07 · 2023</span></figcaption>
+          </figure>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="mega-footer">
-    <div class="container">
-      <div class="mega-grid">
-        <div class="mega-brand">
-          <img src="assets/img/jfl-mark.png" alt="JFL Studio 360" />
-          <p>Branding, producto, tecnología y growth en un ecosistema visual y digital coherente.</p>
-          <div class="social">
-            <a class="instagram-link" href="https://www.instagram.com/jfl_studio360" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17.5 6.8h.01"/></svg></a>
-            <a class="instagram-link" href="mailto:jflstudio360@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></a>
+  <div class="sf-tinta closing">
+    <span class="halo" aria-hidden="true"></span>
+    <section class="closing-cta wrap" aria-labelledby="cta-title">
+      <div class="topline" style="width:100%"><span class="label">Trabajemos juntos</span><span class="label">@jfl_studio360</span></div>
+      <h2 class="duo duo--xl" id="cta-title" data-reveal><span class="duo-a">Mismo estudio</span><span class="duo-b">otro criterio</span></h2>
+      <p class="lead" data-reveal>Lo que hicimos con nuestra marca lo hacemos con la tuya.</p>
+      <div class="actions" data-reveal>
+        <a class="btn btn--solid" href="contacto.html">Escribime <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn" href="trabajos.html">Ver trabajos</a>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <p class="signature">JFL Studio 360<span class="dot">.</span></p>
+            <p class="body">Estudio de diseño integral. Identidad, producto, web y contenido con una misma mirada.</p>
+          </div>
+          <nav class="footer-col" aria-label="Páginas">
+            <p class="label">Páginas</p>
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="trabajos.html">Trabajos</a>
+            <a href="estudio.html">Estudio</a>
+            <a href="contacto.html">Contacto</a>
+          </nav>
+          <div class="footer-col">
+            <p class="label">Contacto</p>
+            <a href="mailto:jflstudio360@gmail.com">jflstudio360@gmail.com</a>
+            <a href="https://www.instagram.com/jfl_studio360" target="_blank" rel="noopener">Instagram · @jfl_studio360</a>
           </div>
         </div>
-        <div class="mega-col">
-          <h4>Navegación</h4>
-          <a href="index.html">Inicio</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="trabajos.html">Trabajos</a>
-          <a href="estudio.html">Estudio</a>
-          <a href="contacto.html">Contacto</a>
-        </div>
-        <div class="mega-col">
-          <h4>Servicios</h4>
-          <a href="servicios.html">Branding &amp; Identidad</a>
-          <a href="servicios.html">Diseño industrial</a>
-          <a href="servicios.html">Web, código &amp; IA</a>
-          <a href="servicios.html">Redes &amp; growth</a>
+        <div class="footer-bottom">
+          <p class="label">© <span data-year>2026</span> JFL Studio 360</p>
+          <a class="label to-top" href="#top">Volver arriba ↑</a>
         </div>
       </div>
-      <div class="mega-bottom">
-        <small>© <span data-year></span> JFL Studio 360. Todos los derechos reservados.</small>
-        <a href="mailto:jflstudio360@gmail.com">jflstudio360@gmail.com</a>
-      </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
-  <script src="assets/vendor/motion.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

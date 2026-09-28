@@ -1,246 +1,243 @@
 <!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Servicios | JFL Studio 360</title>
-  <meta name="description" content="Branding, diseño industrial, web e IA, redes y growth. Un método claro de diagnóstico, concepto, diseño, implementación y escala." />
-  <meta name="theme-color" content="#080813" />
+  <meta name="description" content="Diseño e identidad, producto y 3D, web con código e IA, y contenido con pauta. Un estudio, cuatro disciplinas y un proceso de seis etapas." />
+  <meta name="theme-color" content="#FBF3E3" />
   <link rel="icon" href="assets/favicon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Servicios | JFL Studio 360" />
-  <meta property="og:description" content="Áreas integradas y un método claro para construir, lanzar y escalar tu marca." />
+  <meta property="og:description" content="Diseño e identidad, producto y 3D, web con código e IA, y contenido con pauta. Un estudio, cuatro disciplinas y un proceso de seis etapas." />
   <meta property="og:image" content="assets/img/jfl-full.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300..900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="app.css" />
-  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('jfl-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}var rm=false;try{rm=matchMedia('(prefers-reduced-motion:reduce)').matches;}catch(e){}var l=null;try{l=sessionStorage.getItem('jfl-loaded');}catch(e){}d.classList.add((l||rm)?'pl-skip':'pl-active');})();</script>
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('jfl-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}try{if(!sessionStorage.getItem('jfl-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('intro-on');}catch(e){}})();</script>
 </head>
 <body>
-  <div class="preloader" data-preloader aria-hidden="true">
-    <span class="pl-panel pl-panel--top"></span>
-    <span class="pl-panel pl-panel--bottom"></span>
-    <div class="pl-stage">
-      <span class="pl-blob pl-blob--a"></span>
-      <span class="pl-blob pl-blob--b"></span>
-      <div class="pl-ring">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <circle class="pl-ring-track" cx="60" cy="60" r="52"></circle>
-          <circle class="pl-ring-arc" cx="60" cy="60" r="52"></circle>
-        </svg>
-        <span class="pl-360">360°</span>
-      </div>
-      <strong class="pl-word">JFL Studio 360</strong>
-      <span class="pl-tag">Diseño · Tecnología · Crecimiento</span>
-      <span class="pl-count"><b data-pl-count>0</b>%</span>
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <div class="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <p class="intro-sig">JFL Studio 360<span class="dot">.</span></p>
+      <span class="intro-line"></span>
+      <p class="label intro-label">Estudio de diseño integral</p>
     </div>
   </div>
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
-  <div class="cursor-glow" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="page-veil" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="JFL Studio 360 — inicio"><img src="assets/img/jfl-mark.png" alt="JFL Studio 360" /></a>
-    <nav class="nav-links" aria-label="Navegación principal">
-      <a href="index.html">Inicio</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="trabajos.html">Trabajos</a>
-      <a href="estudio.html">Estudio</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-    <div class="header-actions">
-      <a class="btn btn-ghost header-cta" href="contacto.html">Hablemos</a>
-      <button class="theme-toggle" type="button" aria-label="Cambiar tema claro u oscuro" data-theme-toggle>
-        <span class="theme-toggle__icon theme-toggle__icon--sun"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
-        <span class="theme-toggle__icon theme-toggle__icon--moon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.4A8 8 0 0 1 9.6 4 8.1 8.1 0 1 0 20 14.4Z"/></svg></span>
-      </button>
-      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="JFL Studio 360 — Inicio"><img src="assets/img/jfl-mark.png" alt="JFL Studio 360" width="944" height="515" /></a>
+      <nav class="nav" id="site-nav" aria-label="Principal">
+        <a href="index.html" class="nav-home"><span class="nav-num">01</span>Inicio</a>
+        <a href="servicios.html" aria-current="page"><span class="nav-num">02</span>Servicios</a>
+        <a href="trabajos.html"><span class="nav-num">03</span>Trabajos</a>
+        <a href="estudio.html"><span class="nav-num">04</span>Estudio</a>
+        <a href="contacto.html"><span class="nav-num">05</span>Contacto</a>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-switch" type="button" data-theme-toggle aria-label="Cambiar entre tema papel y tinta"><span data-t="light">Papel</span><i>/</i><span data-t="dark">Tinta</span></button>
+        <a class="btn btn--sm" href="contacto.html">Escribime</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" data-menu>Menú</button>
+      </div>
     </div>
   </header>
 
-  <main>
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-      <div class="container">
-        <p class="breadcrumb"><a href="index.html">Inicio</a> <i></i> Servicios</p>
-        <h1 data-reveal="blur">Un ecosistema <span class="text-gradient">360° de diseño.</span></h1>
-        <p class="page-lead" data-reveal="up" data-reveal-delay="0.1">Cinco áreas que se conectan entre sí para construir, lanzar y escalar tu marca con coherencia visual, técnica y comercial.</p>
-        <div class="hero-meta" data-reveal="up" data-reveal-delay="0.2">
-          <span>Branding</span><span>Producto</span><span>Web &amp; IA</span><span>Redes</span><span>Growth</span>
+  <main id="main">
+    <section class="sf-papel page-hero" aria-labelledby="page-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Servicios</span><span class="label num">4 disciplinas</span></div>
+        <h1 class="duo duo--xl" id="page-title" data-reveal><span class="duo-a">Qué</span><span class="duo-b">hacemos</span></h1>
+        <div class="page-hero-grid">
+          <p class="serif-lead" data-reveal>Un estudio, cuatro disciplinas. Todo bajo el mismo criterio.</p>
+          <p class="body" data-reveal>Identidad, producto y 3D, web con código e IA, y contenido con pauta, para que tu marca se vea igual de bien en un envase, una web o un reel.</p>
         </div>
+        <nav class="jump" aria-label="Ir a un servicio" data-reveal>
+          <a href="#identidad"><b>01</b>Diseño e identidad</a>
+          <a href="#producto"><b>02</b>Producto y 3D</a>
+          <a href="#web"><b>03</b>Web, código e IA</a>
+          <a href="#contenido"><b>04</b>Contenido y pauta</a>
+          <a href="#proceso"><b>05</b>Proceso</a>
+        </nav>
       </div>
     </section>
 
-    <!-- SERVICIOS DETALLE (filas alternadas) -->
-    <section class="section-pad">
-      <div class="container">
-        <div class="showcase">
-
-          <div class="feature-row">
-            <div class="feature-text" data-reveal="left">
-              <div class="section-kicker"><span class="num">01</span><span class="bar"></span></div>
-              <h2>Branding &amp; Identidad visual</h2>
-              <p>Desarrollo de identidad, logotipo, paleta, tipografías, sistema gráfico, piezas de marca y dirección visual completa.</p>
-              <ul class="feature-list">
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Identidad y logotipo</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Paleta y tipografías</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Sistema gráfico y piezas de marca</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Dirección visual</li>
+    <!-- Servicio 01 -->
+    <section class="sf-crema section" id="identidad" aria-labelledby="s1-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Servicio 01</span><span class="label num">01 / 04</span></div>
+        <article class="service">
+          <figure class="service-media" data-reveal>
+            <div class="photo"><img src="assets/img/foto-identidad.webp" alt="" width="920" height="420" loading="lazy" /></div>
+            <figcaption><span class="label">En la práctica</span><a class="link" href="trabajos.html?f=identidad">Ver trabajos <span class="arr" aria-hidden="true">→</span></a></figcaption>
+          </figure>
+          <div class="service-copy">
+            <h2 class="duo duo--md" id="s1-title" data-reveal><span class="duo-a">Diseño</span><span class="duo-b">e identidad</span></h2>
+            <p class="lead" data-reveal>Una identidad que se entiende en tres segundos.</p>
+            <p class="body" data-reveal>Desarrollo de identidad, logotipo, paleta, tipografías, sistema gráfico, piezas de marca y dirección visual completa.</p>
+            <hr class="rule rule--coral" data-reveal />
+            <div data-reveal>
+              <p class="label service-list-head">Qué incluye</p>
+              <ul class="dash">
+                <li>Logotipo y variantes</li>
+                <li>Paleta y tipografías</li>
+                <li>Sistema gráfico</li>
+                <li>Piezas de marca</li>
+                <li>Dirección visual</li>
               </ul>
             </div>
-            <figure class="feature-media is-logo" data-reveal="scale"><span class="glow"></span><img src="assets/img/portfolio-244-logo.webp" alt="Identidad de marca 244 Motos" loading="lazy" /></figure>
           </div>
-
-          <div class="feature-row reverse">
-            <div class="feature-text" data-reveal="right">
-              <div class="section-kicker"><span class="num">02</span><span class="bar"></span></div>
-              <h2>Diseño industrial &amp; producto</h2>
-              <p>Concepto, morfología, renders, paneles de presentación, planos técnicos, modelados 3D y desarrollo de sistemas de producto.</p>
-              <ul class="feature-list">
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Concepto y morfología</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Renders y paneles</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Planos técnicos</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Modelados 3D y sistemas</li>
+        </article>
+      </div>
+    </section>
+    <!-- Servicio 02 -->
+    <section class="sf-papel section" id="producto" aria-labelledby="s2-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Servicio 02</span><span class="label num">02 / 04</span></div>
+        <article class="service service--flip">
+          <figure class="service-media" data-reveal>
+            <div class="photo"><img src="assets/img/foto-producto.webp" alt="" width="920" height="420" loading="lazy" /></div>
+            <figcaption><span class="label">En la práctica</span><a class="link" href="trabajos.html?f=producto">Ver trabajos <span class="arr" aria-hidden="true">→</span></a></figcaption>
+          </figure>
+          <div class="service-copy">
+            <h2 class="duo duo--md" id="s2-title" data-reveal><span class="duo-a">Producto</span><span class="duo-b">y 3D</span></h2>
+            <p class="lead" data-reveal>De la idea al objeto, con criterio de fabricación.</p>
+            <p class="body" data-reveal>Concepto, morfología, renders, paneles de presentación, planos técnicos, modelados 3D y desarrollo de sistemas de producto.</p>
+            <hr class="rule rule--coral" data-reveal />
+            <div data-reveal>
+              <p class="label service-list-head">Qué incluye</p>
+              <ul class="dash">
+                <li>Concepto y morfología</li>
+                <li>Renders y modelados</li>
+                <li>Planos técnicos</li>
+                <li>Paneles de presentación</li>
               </ul>
             </div>
-            <figure class="feature-media" data-reveal="scale"><span class="glow"></span><img src="assets/img/portfolio-hidratacion-01.webp" alt="Render de producto: puesto de hidratación" loading="lazy" /></figure>
           </div>
-
-          <div class="feature-row">
-            <div class="feature-text" data-reveal="left">
-              <div class="section-kicker"><span class="num">03</span><span class="bar"></span></div>
-              <h2>Web, código &amp; IA aplicada</h2>
-              <p>Landing pages, sitios responsive, automatizaciones, experiencias interactivas e integración de inteligencia artificial.</p>
-              <ul class="feature-list">
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Landing pages y sitios responsive</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Automatizaciones</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Experiencias interactivas</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Integración de IA</li>
+        </article>
+      </div>
+    </section>
+    <!-- Servicio 03 -->
+    <section class="sf-crema section" id="web" aria-labelledby="s3-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Servicio 03</span><span class="label num">03 / 04</span></div>
+        <article class="service">
+          <figure class="service-media" data-reveal>
+            <div class="photo"><img src="assets/img/foto-web.webp" alt="" width="920" height="420" loading="lazy" /></div>
+            <figcaption><span class="label">En la práctica</span><a class="link" href="trabajos.html?f=web">Ver trabajos <span class="arr" aria-hidden="true">→</span></a></figcaption>
+          </figure>
+          <div class="service-copy">
+            <h2 class="duo duo--md" id="s3-title" data-reveal><span class="duo-a">Web, código</span><span class="duo-b">e IA</span></h2>
+            <p class="lead" data-reveal>Tu web trabajando por vos, todos los días.</p>
+            <p class="body" data-reveal>Landing pages, sitios responsive, automatizaciones, experiencias interactivas e integración de inteligencia artificial.</p>
+            <hr class="rule rule--coral" data-reveal />
+            <div data-reveal>
+              <p class="label service-list-head">Qué incluye</p>
+              <ul class="dash">
+                <li>Landing pages</li>
+                <li>Sitios completos</li>
+                <li>Automatizaciones</li>
+                <li>Herramientas digitales con IA</li>
               </ul>
             </div>
-            <figure class="feature-media" data-reveal="scale"><span class="glow"></span><img src="assets/img/portfolio-bigcode-monitor.webp" alt="Aplicación web BigCode Studio" loading="lazy" /></figure>
           </div>
-
-          <div class="feature-row reverse">
-            <div class="feature-text" data-reveal="right">
-              <div class="section-kicker"><span class="num">04</span><span class="bar"></span></div>
-              <h2>Redes, contenido &amp; growth</h2>
-              <p>Community management, estrategia de contenido, pauta digital, Meta Ads, Google Ads y optimización comercial.</p>
-              <ul class="feature-list">
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Community management</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Estrategia de contenido</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Pauta: Meta &amp; Google Ads</li>
-                <li><svg viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></svg> Optimización comercial</li>
+        </article>
+      </div>
+    </section>
+    <!-- Servicio 04 -->
+    <section class="sf-papel section" id="contenido" aria-labelledby="s4-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Servicio 04</span><span class="label num">04 / 04</span></div>
+        <article class="service service--flip">
+          <figure class="service-media" data-reveal>
+            <div class="photo"><img src="assets/img/foto-contenido.webp" alt="" width="920" height="420" loading="lazy" /></div>
+            <figcaption><span class="label">En la práctica</span><a class="link" href="trabajos.html?f=contenido">Ver trabajos <span class="arr" aria-hidden="true">→</span></a></figcaption>
+          </figure>
+          <div class="service-copy">
+            <h2 class="duo duo--md" id="s4-title" data-reveal><span class="duo-a">Contenido</span><span class="duo-b">y pauta</span></h2>
+            <p class="lead" data-reveal>Contenido con estrategia y pauta que se mide.</p>
+            <p class="body" data-reveal>Community management, estrategia de contenido, pauta digital en Meta Ads y Google Ads, y optimización comercial.</p>
+            <hr class="rule rule--coral" data-reveal />
+            <div data-reveal>
+              <p class="label service-list-head">Qué incluye</p>
+              <ul class="dash">
+                <li>Community management</li>
+                <li>Diseño de publicaciones</li>
+                <li>Reels y video</li>
+                <li>Meta Ads y Google Ads</li>
               </ul>
             </div>
-            <figure class="feature-media" data-reveal="scale"><span class="glow"></span><img src="assets/img/portfolio-logistic-system.webp" alt="Contenido y redes: Logistic Point" loading="lazy" /></figure>
           </div>
-
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- MÉTODO (sticky storytelling) -->
-    <section class="section-pad method-section">
-      <div class="container sticky-story">
-        <aside class="sticky-aside">
-          <p class="eyebrow"><span></span> Método de trabajo</p>
-          <h2>Un proceso claro para que el diseño no quede aislado.</h2>
-          <p>La metodología ordena diagnóstico, concepto, ejecución e implementación para evitar piezas sueltas y construir sistemas aplicables.</p>
-          <div class="aside-progress" aria-hidden="true">
-            <button type="button" class="is-active"><span class="dotline"></span> Diagnóstico</button>
-            <button type="button"><span class="dotline"></span> Concepto</button>
-            <button type="button"><span class="dotline"></span> Diseño</button>
-            <button type="button"><span class="dotline"></span> Implementación</button>
-            <button type="button"><span class="dotline"></span> Escala</button>
-          </div>
-        </aside>
-        <div class="sticky-steps">
-          <article class="story-step" data-reveal="up">
-            <span class="step-icon"><svg viewBox="0 0 24 24"><path d="M10.5 18a7.5 7.5 0 1 1 5.3-2.2L21 21"/><path d="M8 10h5M8 13h3"/></svg></span>
-            <span class="step-num">PASO 01</span><h3>Diagnóstico</h3>
-            <p>Objetivos, público, problema, diferencial y oportunidad real del proyecto. Entender antes de diseñar.</p>
-          </article>
-          <article class="story-step" data-reveal="up">
-            <span class="step-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2Z"/></svg></span>
-            <span class="step-num">PASO 02</span><h3>Concepto</h3>
-            <p>Dirección estratégica, narrativa, tono, estética y universo visual de marca que guía todo lo que sigue.</p>
-          </article>
-          <article class="story-step" data-reveal="up">
-            <span class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 7.2v9.6L12 21l7.5-4.2V7.2L12 3Z"/><path d="M4.8 7.5 12 11.5l7.2-4M12 21v-9.5"/></svg></span>
-            <span class="step-num">PASO 03</span><h3>Diseño</h3>
-            <p>Identidad, producto, interfaz, contenido o sistema gráfico según la necesidad concreta del proyecto.</p>
-          </article>
-          <article class="story-step" data-reveal="up">
-            <span class="step-icon"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/><path d="M4 4h16v16H4z"/></svg></span>
-            <span class="step-num">PASO 04</span><h3>Implementación</h3>
-            <p>Web, redes, automatización, renders, campañas o piezas listas para publicar y poner en marcha.</p>
-          </article>
-          <article class="story-step" data-reveal="up">
-            <span class="step-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M8 17V9M12 17V7M16 17v-4M20 19H4"/></svg></span>
-            <span class="step-num">PASO 05</span><h3>Escala</h3>
-            <p>Medición, ajustes, mejora continua y crecimiento comercial del ecosistema en el tiempo.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section-pad cta-section">
-      <div class="container">
-        <div class="cta-card" data-reveal="up">
-          <div>
-            <p class="eyebrow"><span></span> Empecemos</p>
-            <h2>¿Qué necesita tu marca hoy?</h2>
-            <p>Contame en qué etapa está tu proyecto y armamos una propuesta a medida con identidad, producto, web o crecimiento.</p>
-          </div>
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="contacto.html" data-magnetic>Pedir propuesta <span class="arrow">→</span></a>
-            <a class="btn btn-secondary" href="trabajos.html" data-magnetic>Ver trabajos</a>
+    <!-- Proceso -->
+    <section class="sf-crema section" id="proceso" aria-labelledby="pr-title">
+      <div class="wrap">
+        <div class="topline"><span class="label">Proceso</span><span class="label num">6 etapas</span></div>
+        <div class="head">
+          <h2 class="duo" id="pr-title" data-reveal><span class="duo-a">Así nace</span><span class="duo-b">una marca</span></h2>
+          <div class="head-side" data-reveal>
+            <p class="body">Diagnóstico, estrategia, concepto, diseño, sistema y entrega. Cada etapa tiene una razón y ninguna se saltea.</p>
           </div>
         </div>
+        <ol class="timeline" data-reveal>
+          <li class="stage"><span class="stage-num">01</span><h3>Diagnóstico</h3><p>Escuchamos qué hacés, a quién le hablás y qué no funciona.</p></li>
+          <li class="stage"><span class="stage-num">02</span><h3>Estrategia</h3><p>Definimos posicionamiento, tono y lo que te diferencia.</p></li>
+          <li class="stage"><span class="stage-num">03</span><h3>Concepto</h3><p>Una idea central que ordena las decisiones visuales.</p></li>
+          <li class="stage"><span class="stage-num">04</span><h3>Diseño</h3><p>Logotipo, paleta y tipografías, probados en uso real.</p></li>
+          <li class="stage"><span class="stage-num">05</span><h3>Sistema</h3><p>Retícula, reglas y plantillas para que la marca escale.</p></li>
+          <li class="stage"><span class="stage-num">06</span><h3>Entrega</h3><p>Manual, archivos finales y acompañamiento al lanzar.</p></li>
+        </ol>
+        <div class="timeline-foot"><span class="label">Inicio</span><span class="label">Lanzamiento</span></div>
       </div>
     </section>
   </main>
 
-  <footer class="mega-footer">
-    <div class="container">
-      <div class="mega-grid">
-        <div class="mega-brand">
-          <img src="assets/img/jfl-mark.png" alt="JFL Studio 360" />
-          <p>Branding, producto, tecnología y growth en un ecosistema visual y digital coherente.</p>
-          <div class="social">
-            <a class="instagram-link" href="https://www.instagram.com/jfl_studio360" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M17.5 6.8h.01"/></svg></a>
-            <a class="instagram-link" href="mailto:jflstudio360@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></a>
+  <div class="sf-tinta closing">
+    <span class="halo" aria-hidden="true"></span>
+    <section class="closing-cta wrap" aria-labelledby="cta-title">
+      <div class="topline" style="width:100%"><span class="label">Empecemos</span><span class="label">@jfl_studio360</span></div>
+      <h2 class="duo duo--xl" id="cta-title" data-reveal><span class="duo-a">¿Qué necesita</span><span class="duo-b">tu marca hoy?</span></h2>
+      <p class="lead" data-reveal>Contame en qué etapa está tu proyecto y te digo por dónde empezar.</p>
+      <div class="actions" data-reveal>
+        <a class="btn btn--solid" href="contacto.html">Escribime <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn" href="trabajos.html">Ver trabajos</a>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <p class="signature">JFL Studio 360<span class="dot">.</span></p>
+            <p class="body">Estudio de diseño integral. Identidad, producto, web y contenido con una misma mirada.</p>
+          </div>
+          <nav class="footer-col" aria-label="Páginas">
+            <p class="label">Páginas</p>
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="trabajos.html">Trabajos</a>
+            <a href="estudio.html">Estudio</a>
+            <a href="contacto.html">Contacto</a>
+          </nav>
+          <div class="footer-col">
+            <p class="label">Contacto</p>
+            <a href="mailto:jflstudio360@gmail.com">jflstudio360@gmail.com</a>
+            <a href="https://www.instagram.com/jfl_studio360" target="_blank" rel="noopener">Instagram · @jfl_studio360</a>
           </div>
         </div>
-        <div class="mega-col">
-          <h4>Navegación</h4>
-          <a href="index.html">Inicio</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="trabajos.html">Trabajos</a>
-          <a href="estudio.html">Estudio</a>
-          <a href="contacto.html">Contacto</a>
-        </div>
-        <div class="mega-col">
-          <h4>Servicios</h4>
-          <a href="servicios.html">Branding &amp; Identidad</a>
-          <a href="servicios.html">Diseño industrial</a>
-          <a href="servicios.html">Web, código &amp; IA</a>
-          <a href="servicios.html">Redes &amp; growth</a>
+        <div class="footer-bottom">
+          <p class="label">© <span data-year>2026</span> JFL Studio 360</p>
+          <a class="label to-top" href="#top">Volver arriba ↑</a>
         </div>
       </div>
-      <div class="mega-bottom">
-        <small>© <span data-year></span> JFL Studio 360. Todos los derechos reservados.</small>
-        <a href="mailto:jflstudio360@gmail.com">jflstudio360@gmail.com</a>
-      </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
-  <script src="assets/vendor/motion.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
