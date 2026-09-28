@@ -70,7 +70,7 @@
     el.querySelectorAll(':scope .row, :scope .change, :scope .stage').forEach((child, i) => child.style.setProperty('--i', i));
   });
   // Escalonado entre hermanos de una misma grilla
-  document.querySelectorAll('.certs, .swatches, .specimens, .cases, .hero-copy').forEach((grid) => {
+  document.querySelectorAll('.certs, .swatches, .specimens, .cases, .hero-copy, .profiles').forEach((grid) => {
     [...grid.children].filter((c) => c.hasAttribute('data-reveal')).forEach((c, i) => c.style.setProperty('--i', i % 4));
   });
 
@@ -227,6 +227,76 @@
   }
 
   /* ---------------------------------------------------------------- */
+  /* Contenido en redes: visor de publicaciones                       */
+  /* ---------------------------------------------------------------- */
+  const lb = document.querySelector('[data-lightbox]');
+  if (lb && typeof lb.showModal === 'function') {
+    const img = lb.querySelector('[data-lb-img]');
+    const title = lb.querySelector('[data-lb-title]');
+    const count = lb.querySelector('[data-lb-count]');
+    const caption = lb.querySelector('[data-lb-caption]');
+    const stage = lb.querySelector('[data-lb-stage]');
+    const pad = (n) => String(n).padStart(2, '0');
+    let seq = [];
+    let at = 0;
+    let opener = null;
+
+    const show = (i) => {
+      at = (i + seq.length) % seq.length;
+      const s = seq[at];
+      img.src = s.src;
+      img.alt = `${s.title}: imagen ${s.n} de ${s.total}, @${s.handle}`;
+      title.textContent = `@${s.handle} · ${s.kind}`;
+      count.textContent = `${pad(s.n)} / ${pad(s.total)}`;
+      caption.textContent = s.title;
+      const upcoming = seq[(at + 1) % seq.length];
+      if (upcoming) new Image().src = upcoming.src; // precarga la siguiente
+    };
+
+    // Cada perfil es una secuencia continua: al terminar un carrusel sigue la próxima publicación
+    document.querySelectorAll('[data-ig]').forEach((profile) => {
+      const handle = profile.dataset.handle;
+      const flat = [];
+      [...profile.querySelectorAll('.ig-tile')].forEach((tile) => {
+        const start = flat.length;
+        const slides = (tile.dataset.slides || '').split('|').filter(Boolean);
+        slides.forEach((src, k) => flat.push({ src, handle, kind: tile.dataset.kind, title: tile.dataset.title, n: k + 1, total: slides.length }));
+        tile.addEventListener('click', () => {
+          seq = flat;
+          opener = tile;
+          show(start);
+          lb.showModal();
+          root.classList.add('lb-open');
+        });
+      });
+    });
+
+    lb.querySelector('[data-lb-prev]')?.addEventListener('click', () => show(at - 1));
+    lb.querySelector('[data-lb-next]')?.addEventListener('click', () => show(at + 1));
+    lb.querySelector('[data-lb-close]')?.addEventListener('click', () => lb.close());
+    lb.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(at + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(at - 1); }
+    });
+    // Tocar el fondo (fuera de la imagen) cierra
+    stage?.addEventListener('click', (e) => { if (e.target === stage) lb.close(); });
+    lb.addEventListener('close', () => {
+      root.classList.remove('lb-open');
+      img.removeAttribute('src');
+      opener?.focus();
+    });
+    // Deslizar en pantallas táctiles
+    let x0 = null;
+    stage?.addEventListener('pointerdown', (e) => { x0 = e.clientX; });
+    stage?.addEventListener('pointerup', (e) => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 45) show(at + (dx < 0 ? 1 : -1));
+    });
+  }
+
+  /* ---------------------------------------------------------------- */
   /* Formulario: arma el mail listo para enviar                       */
   /* ---------------------------------------------------------------- */
   const form = document.querySelector('[data-contact-form]');
@@ -253,7 +323,7 @@
   /* ---------------------------------------------------------------- */
   /* Protección básica de imágenes (disuade descargas casuales)       */
   /* ---------------------------------------------------------------- */
-  const protectedSel = '.frame, .photo, .palette-logo';
+  const protectedSel = '.frame, .photo, .palette-logo, .ig-tile, .lb-stage';
   document.querySelectorAll('img').forEach((img) => img.setAttribute('draggable', 'false'));
   ['contextmenu', 'dragstart'].forEach((evt) => {
     document.addEventListener(evt, (e) => { if (e.target.closest?.(protectedSel)) e.preventDefault(); });
