@@ -40,11 +40,16 @@
   /* ---------------------------------------------------------------- */
   const menuBtn = document.querySelector('[data-menu]');
   const nav = document.getElementById('site-nav');
+  // Lo que queda detrás del menú abierto no debe recibir foco ni toques
+  const behindMenu = [document.querySelector('main'), document.querySelector('.closing'), document.querySelector('.skip')].filter(Boolean);
   const setMenu = (open) => {
+    if (!nav) return;
     menuBtn?.setAttribute('aria-expanded', String(open));
     if (menuBtn) menuBtn.textContent = open ? 'Cerrar' : 'Menú';
-    nav?.classList.toggle('is-open', open);
+    nav.classList.toggle('is-open', open);
     root.classList.toggle('menu-open', open);
+    behindMenu.forEach((el) => { el.inert = open; });
+    if (open) nav.querySelector('a')?.focus({ preventScroll: true });
   };
   menuBtn?.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
   nav?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
